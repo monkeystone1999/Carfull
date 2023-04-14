@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
+*{
+    box-sizing: border-box;
+    margin: 0;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Log_in:hover{
+    cursor: pointer;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sign_up:hover{
+    cursor: pointer;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+nav{
+    width: 100vw;
+    padding: 40px;
+    background-color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.flex{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav_flex{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1px;
+}
+.left_side{
+    width: 350px;
+    font-size: 1.5rem;
+}
+.right_side{
+    width: 500px;
+}
+.inputs{
+    margin-top: 200px;
+    padding: 1px;
+}
+@media screen and (max-width: 700px) and (min-width: 500px) {
+    nav{
+        padding: 30px;
+    }
+    .login_box{
+        min-width: 300px;
+        height: 50vh;
+    }
+    .sign_box{
+        min-width: 500px;
+        height: 50vh;
+    }
+    .nav_flex{
+        flex-wrap: wrap;
+    }
+    .left_side{
+        padding: 10px;
+    }
+    .right_side{
+        padding: 10px;
+    }
+    .width_80{
+        width: 90%;
+    }
+    .submit_bt{
+        margin-top: 4px;
+    }
+}
+@media screen and (max-width: 500px){
+    nav{
+        padding: 0px;
+    }
+    .login_box{
+        min-width: 300px;
+        height: 50vh;
+    }
+    .exit{
+        padding: 10px;
+    }
+    .sign_box{
+        min-width: 100vw;
+        height: 65vh;
+    }
+    .nav_flex{
+        flex-wrap: wrap;
+    }
+    .left_side{
+        padding: 10px;
+    }
+    .right_side{
+        padding: 10px;
+    }
+    .width_80{
+        width: 90%;
+    }
+    .submit_bt{
+        margin-top: 4px;
+        margin-right: 4px;
+    }
 }
