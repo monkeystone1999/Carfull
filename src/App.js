@@ -9,7 +9,7 @@ import Sign from "./sign/App";
 import Insider from "./insider";
 import Write from "./write/App";
 import axios from "axios";
-import {delToken, reToken} from "./export/access";
+import {delToken} from "./export/access";
 import {getCookie, setCookie} from "./export/refresh";
 import {Recruit} from "./recruit/App";
 import {RecDetail} from "./recruit/recdetail";
