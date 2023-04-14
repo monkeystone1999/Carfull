@@ -38,14 +38,6 @@ export const axiosSign = (formData, setSign) => {
     })
 }
 
-// const AccessAxios = axios.create({
-//     baseURL: `${API.BASEURL}`,
-//     headers: { "Content-type": "application/json" }
-// })
-//
-// AccessAxios.interceptors.request((config)=>{
-//
-// })
 
 export const axiosWrite = (formData, Auth, setResult) => {
     axios({
