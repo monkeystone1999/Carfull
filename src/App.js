@@ -30,32 +30,32 @@ function App() {
     const Token_To = 900000;
     const [Ti_Token, setTi_Token] = useState(0);
     let To_Token = Ti_Token + Token_To;
-    const axiosBaseInfo = () =>{
+    const axiosBaseInfo = () => {
         axios({
             url: `${API.RECRUIT}`,
-            method : 'get',
+            method: 'get',
         }).then(res => {
             dispatch(setBoard(res.data))
-    }).catch(err=>console.log(err))
-}
-const handleLogout = () => {
+        }).catch(err => console.log(err))
+    }
+    const handleLogout = () => {
         delToken("access_token");
         setCookie("refresh_token");
         setUser(false);
         return redirect("/");
     };
-    useEffect(()=>{
+    useEffect(() => {
         axiosBaseInfo()
     }, [Reducer])
-    useEffect(()=>{
-        if (getCookie("refresh_token") !== ""){
+    useEffect(() => {
+        if (getCookie("refresh_token") !== "") {
             setUser(true);
             // setTi_Token(new Date().getTime());
             // if(Ti_Token+ 900000 >= To_Token ){
             //     reToken("access_token");
             // }
         }
-    },[isUser])
+    }, [isUser])
     //token time cookie time login 유무 이 3가지만 내려보내자
     // user 가 true 냐에 따라서 같은 url 이라도 바뀌어야함
     // user true 에 관련된 것중 뭐가 context 여야할까?
@@ -64,7 +64,9 @@ const handleLogout = () => {
         <AuthContext.Provider value={{isUser, setUser, setReducer}}>
             <Nav_bar handleLogout={handleLogout}></Nav_bar>
             <Routes>
-                <Route path={"*"} element={()=>{redirect("/")}}></Route>
+                <Route path={"*"} element={() => {
+                    redirect("/")
+                }}></Route>
                 <Route path={"/"} element={<Main></Main>}></Route>
                 <Route path={"/login"} element={<Login></Login>}></Route>
                 <Route path={"/sign"} element={<Sign></Sign>}></Route>
@@ -78,6 +80,7 @@ const handleLogout = () => {
         </AuthContext.Provider>
     )
 }
+
 // function StarUrl(){
 //     const navigate = useNavigate();
 //     useEffect(()=>{
@@ -94,7 +97,9 @@ function Nav_bar({handleLogout}) {
             <nav className={"nav_flex"}>
                 <div className={"left_side"}>
                     <div className={"flex"}>
-                        <Link to={"/"}><div className={"Logo"}>Logo</div></Link>
+                        <Link to={"/"}>
+                            <div className={"Logo"}>Logo</div>
+                        </Link>
                         {isUser ? (
                             <Link onClick={handleLogout}> Logout </Link>
                         ) : (
@@ -115,7 +120,9 @@ function Nav_bar({handleLogout}) {
                             <input className="form-control me-2" type="search" placeholder="Search"
                                    aria-label="Search"></input>
                         </form>
-                        <Link to={"/recruit"}><div itemType={"button"}>just Look Around</div></Link>
+                        <Link to={"/recruit"}>
+                            <div itemType={"button"}>just Look Around</div>
+                        </Link>
                     </div>
                 </div>
             </nav>

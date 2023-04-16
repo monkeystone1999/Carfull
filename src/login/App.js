@@ -1,7 +1,8 @@
 import React, {useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {axiosLogin} from "../export/axios_custom";
 import {AuthContext} from "../Auth";
+import {Login_Submit} from "./Container";
+import {Login_MainFunc} from "./Presentation";
 /*eslint-disable*/
 function Login() {
     const navigate = useNavigate();
@@ -15,9 +16,6 @@ function Login() {
     formData.append('userId', isId);
     formData.append('pw', password);
 
-    function postLogin() {
-        axiosLogin(formData, setUser);
-    }
     useEffect(()=>{
         if (isUser) {
             return navigate('/');
@@ -26,23 +24,8 @@ function Login() {
     return (
         <>
             <div className={"inputs"}>
-                <input
-                    type="text"
-                    value={isId}
-                    onChange={(e) => {
-                        setId(e.target.value);
-                    }}
-                    placeholder="id"
-                />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => {
-                        setPassword(e.target.value);
-                    }}
-                    placeholder="password"
-                />
-                <button type="submit" onClick={postLogin}>
+                <Login_MainFunc setId={setId} setPassword={setPassword} ></Login_MainFunc>
+                <button type="submit" onClick={Login_Submit(formData, setUser)}>
                     Log In
                 </button>
                 {isError && <div>The username or password provider were incorrect.</div>}

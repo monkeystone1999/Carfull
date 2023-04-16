@@ -11,4 +11,5 @@ export const API = {
     RECRU_DEL : '/withcar/recruit/delete',
     RECRU_APL : '/withcar/recruit/apply',
     RECRU_OWN : '/withcar/recruit/isowner',
+    INFO : '/withcar/myInfo',
 }

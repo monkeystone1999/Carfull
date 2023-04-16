@@ -1,8 +1,23 @@
+import {axiosRecruitApply, axiosRecruitDel, axiosRecruitDetail, axiosRecruitOwner} from "../export/axios_custom";
 import axios from "axios";
 import {API} from "../config";
 
 
-
+export const Mine = ({isMine, isRecruit}) =>{
+    if (!isMine) {
+        return (<button onClick={() => {
+            Submit(isRecruit.recruitCarfullID, 'apply')
+        }}>신청하기!</button>)
+    } else return (<button onClick={() => {
+        Submit(isRecruit.recruitCarfullID, 'del')
+    }}>Delete!</button>)
+}
+export const Submit = (recruitCarfullID, type) => {
+    const access_token = localStorage.getItem("access_token");
+    type == 'del' ?
+        axiosRecruitDel(recruitCarfullID, access_token,setRecRes)
+        : axiosRecruitApply(recruitCarfullID, access_token, setRecRes)
+}
 
 export const axiosRecruitDel = (recruitCarfullID, Auth, setResult) => {
     axios({
@@ -50,22 +65,4 @@ export const axiosRecruitDetail = (params, setResult)=>{
         setResult(res.data);
     })
         .catch(err=>console.log(err));
-}
-
-//signup/check/ nick | id
-
-export const axiosCheckSign = (target, formData)=>{
-    axios({
-        url: `${API.SIGN}/check/${target}`,
-        method: 'get',
-        data : formData,
-    }).then(res => console.log(res))
-        .catch(err=>console.log(err))
-}
-
-export const myInfo = (Auth)=>{
-    axios({
-        url : `${API.INFO}`,
-        method : 'get',
-    })
 }
