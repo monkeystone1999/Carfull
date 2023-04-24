@@ -12,9 +12,9 @@ import axios from "axios";
 import {delToken} from "./export/access";
 import {getCookie, setCookie} from "./export/refresh";
 import {Recruit} from "./recruit/App";
-import {RecDetail} from "./recruit/recdetail";
 import {useDispatch} from "react-redux";
 import {setBoard} from "./reducer/store";
+import {RecruitDetail} from "./detail/App";
 import {API} from "./config";
 // const [isAccess, setAccess] = useState(
 //     localStorage.getItem("access_token") || ""
@@ -71,7 +71,7 @@ function App() {
                 <Route path={"/login"} element={<Login></Login>}></Route>
                 <Route path={"/sign"} element={<Sign></Sign>}></Route>
                 <Route path={"/recruit"} element={<Recruit></Recruit>}></Route>
-                <Route path={"/detail/:detail"} element={<RecDetail></RecDetail>}></Route>
+                <Route path={"/detail/:detail"} element={<RecruitDetail></RecruitDetail>}></Route>
                 <Route element={<Insider user={isUser}/>}>
                     <Route path="/write" element={<Write/>}/>
                     <Route path={""} element={""}/>
@@ -94,38 +94,43 @@ function Nav_bar({handleLogout}) {
 
     return (
         <>
-            <nav className={"nav_flex"}>
-                <div className={"left_side"}>
-                    <div className={"flex"}>
-                        <Link to={"/"}>
-                            <div className={"Logo"}>Logo</div>
-                        </Link>
-                        {isUser ? (
-                            <Link onClick={handleLogout}> Logout </Link>
-                        ) : (
-                            <Link to="/login">Login</Link>
-                        )}
-                        {isUser ? (
-                            <Link to={"/write"}>Write</Link>
-                        ) : (
-                            <Link to={"/sign"}>
-                                <div className={"sign_up"}>Sign Up</div>
+            <div className={"empty"}>
+                <nav className={"nav_flex"}>
+                    <div className={"left_side"}>
+                        <div className={"flex"}>
+                            <Link to={"/"}>
+                                <div className={"Logo"}>Logo</div>
                             </Link>
-                        )}
+                            {isUser ? (
+                                <Link onClick={handleLogout}> Logout </Link>
+                            ) : (
+                                <Link to="/login">Login</Link>
+                            )}
+                            {isUser ? (
+                                <Link to={"/write"}>Write</Link>
+                            ) : (
+                                <Link to={"/sign"}>
+                                    <div className={"sign_up"}>Sign Up</div>
+                                </Link>
+                            )}
+                        </div>
                     </div>
-                </div>
-                <div className={"right_side"}>
-                    <div className={"flex"}>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search"
-                                   aria-label="Search"></input>
-                        </form>
-                        <Link to={"/recruit"}>
-                            <div itemType={"button"}>just Look Around</div>
-                        </Link>
+                    <div className={"right_side"}>
+                        <div className={"flex_r"}>
+                            <div className={"search_bar"}>
+
+                                <input id={"nav_search"} style={{"width": "100%"}} type="search" aria-label="Search" required></input>
+                                <label htmlFor={"nav_search"}>Search</label>
+                                <div className={"underline"}>
+                                </div>
+                            </div>
+                            <Link to={"/recruit"}>
+                                <div itemType={"button"}>just Look Around</div>
+                            </Link>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
             <Outlet></Outlet>
         </>
     )

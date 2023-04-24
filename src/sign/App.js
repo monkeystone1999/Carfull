@@ -33,7 +33,7 @@ function Sign() {
             <Sign_MainFunc setId={setId} setPw={setPw} setPwCheck={setPwCheck}
                       setNick={setNick} setEmail={setEmail} setPhoneNum={setPhoneNum}
             ></Sign_MainFunc>
-            <button type={"submit"} onClick={Sign_Submit(formData, setResult)}>Sign In</button>
+            <button type={"submit"} onClick={()=>{Sign_Submit(formData, setResult)}}>Sign In</button>
         </>
     )
 

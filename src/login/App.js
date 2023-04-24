@@ -23,9 +23,9 @@ function Login() {
     }, [isUser])
     return (
         <>
-            <div className={"inputs"}>
+            <div>
                 <Login_MainFunc setId={setId} setPassword={setPassword} ></Login_MainFunc>
-                <button type="submit" onClick={Login_Submit(formData, setUser)}>
+                <button type="submit" onClick={()=>{Login_Submit(formData, setUser)}}>
                     Log In
                 </button>
                 {isError && <div>The username or password provider were incorrect.</div>}

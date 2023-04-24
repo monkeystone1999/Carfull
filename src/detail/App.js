@@ -1,14 +1,14 @@
 import {redirect, useParams} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
-import {axiosRecruitApply, axiosRecruitDel, axiosRecruitDetail, axiosRecruitOwner} from "../export/axios_custom";
 import {AuthContext} from "../Auth";
+import {axiosRecruitApply,axiosRecruitDetail,axiosRecruitOwner,axiosRecruitDel}from "./Container";
 /* eslint-disable*/
 function RecruitDetail() {
     const {isUser} = useContext(AuthContext);
     let {detail} = useParams();
     let [isRecruit, setRecruit] = useState(Array);
     const [isMine, setMine] = useState(false);
-    const [isRecRes, setRecRes] = useState(false);
+    const [isRecruitResult, setRecruitResult] = useState(false);
     const formData = new FormData();
     useEffect(() => {
         const access_token = localStorage.getItem("access_token");
@@ -60,4 +60,4 @@ function Vagabond(){
 //     Vagabond = 부랑자
 
 }
-export {RecDetail}
+export {RecruitDetail}

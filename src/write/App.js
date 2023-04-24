@@ -32,7 +32,7 @@ function Write() {
                 setTitle={setTitle} setFee={setFee} setLimit={setLimit} setStart={setStart}
                 setEnd={setEnd} setComment={setComment}>
             </Write_MainFunc>
-            <button type={"submit"} onClick={Write_Submit(formData, setWrite)}>등록!</button>
+            <button type={"submit"} onClick={()=>{Write_Submit(formData, setWrite)}}>등록!</button>
         </>
     )
 }

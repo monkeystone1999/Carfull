@@ -1,19 +1,41 @@
-.page{
-    width: 100vw;
-    height: 120vh;
+
+
+.input_style:focus ~.input_underline{
+    transform: scaleX(1);
 }
-.F1{
-    width: 100%;
-    height: 100%;
-    background-color: #ffe2cd;
+.input_box{
+    position: relative;
 }
-.F2{
-    width: 100%;
-    height: 100%;
-    background-color: #adff5c;
+.input_style{
+    border: none;
+    border-bottom: 1px #737373 solid;
+    position: relative;
 }
-.F3{
+.label{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.input_style>.input_underline{
+    position: absolute;
+    bottom: 0px;
+    height: 2px;
+    left: 0;
+    background-color: #8B00BDFF;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+    transform: scaleX(0);
     width: 100%;
-    height: 100%;
-    background-color: #ffe2cd;
+}
+
+.input_style:focus ~ .label,
+.input_style:valid ~ .label{
+    transform: translateY(-20px);
+}
+.input_style:focus{
+    outline: none;
+}
+.boxing{
+    padding: 1px;
+    margin: 0 auto;
 }

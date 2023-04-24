@@ -1,23 +1,7 @@
-import {axiosRecruitApply, axiosRecruitDel, axiosRecruitDetail, axiosRecruitOwner} from "../export/axios_custom";
+
 import axios from "axios";
 import {API} from "../config";
 
-
-export const Mine = ({isMine, isRecruit}) =>{
-    if (!isMine) {
-        return (<button onClick={() => {
-            Submit(isRecruit.recruitCarfullID, 'apply')
-        }}>신청하기!</button>)
-    } else return (<button onClick={() => {
-        Submit(isRecruit.recruitCarfullID, 'del')
-    }}>Delete!</button>)
-}
-export const Submit = (recruitCarfullID, type) => {
-    const access_token = localStorage.getItem("access_token");
-    type == 'del' ?
-        axiosRecruitDel(recruitCarfullID, access_token,setRecRes)
-        : axiosRecruitApply(recruitCarfullID, access_token, setRecRes)
-}
 
 export const axiosRecruitDel = (recruitCarfullID, Auth, setResult) => {
     axios({
