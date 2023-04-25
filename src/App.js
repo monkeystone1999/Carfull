@@ -118,7 +118,6 @@ function Nav_bar({handleLogout}) {
                     <div className={"right_side"}>
                         <div className={"flex_r"}>
                             <div className={"search_bar"}>
-
                                 <input id={"nav_search"} style={{"width": "100%"}} type="search" aria-label="Search" required></input>
                                 <label htmlFor={"nav_search"}>Search</label>
                                 <div className={"underline"}>

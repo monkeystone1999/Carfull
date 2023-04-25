@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 
 function Recruit() {
 
-    const motherBoard = useSelector((state)=>state.MB)
+    const motherBoard = useSelector((state)=>state.MB.board)
     return (
         <>
             {

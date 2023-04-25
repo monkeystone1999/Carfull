@@ -3,17 +3,19 @@ import {configureStore, createSlice} from '@reduxjs/toolkit'
 
 export const MotherBoard = createSlice({
     name : 'MotherBoard',
-    initialState : [],
+    initialState : {board : [], Info : []},
     reducers : {
         setBoard: (state, data) =>{
-            state.push(data.payload);
+            state.board.push(data.payload);
         },
+        setInfo: (state, action)=>{
+            state.Info.push(action.payload);
+        }
     }
 })
-export const {setBoard} = MotherBoard.actions
+export const {setBoard, setInfo} = MotherBoard.actions
 export const store = configureStore({
     reducer: {
         MB : MotherBoard.reducer,
     },
 })
-

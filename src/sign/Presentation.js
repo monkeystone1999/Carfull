@@ -11,6 +11,7 @@ export function Sign_MainFunc({setId, setPw, setPwCheck, setNick, setEmail,setPh
                     setId(e.target.value);
                 }}
                 placeholder="Id"
+                required
             />
             <div>password :</div>
             <input
@@ -20,6 +21,7 @@ export function Sign_MainFunc({setId, setPw, setPwCheck, setNick, setEmail,setPh
                     setPw(e.target.value);
                 }}
                 placeholder="password check"
+                required
             />
             <div>password check :</div>
             <input
@@ -29,6 +31,7 @@ export function Sign_MainFunc({setId, setPw, setPwCheck, setNick, setEmail,setPh
                     setPwCheck(e.target.value);
                 }}
                 placeholder="password"
+                required
             />
             <div>Nick :</div>
             <input
@@ -38,6 +41,7 @@ export function Sign_MainFunc({setId, setPw, setPwCheck, setNick, setEmail,setPh
                     setNick(e.target.value);
                 }}
                 placeholder="Email"
+                required
             />
             <div>Email :</div>
             <input
@@ -47,6 +51,7 @@ export function Sign_MainFunc({setId, setPw, setPwCheck, setNick, setEmail,setPh
                     setEmail(e.target.value);
                 }}
                 placeholder="Email"
+                required
             />
             <div>Phone Number :</div>
             <input
@@ -56,6 +61,7 @@ export function Sign_MainFunc({setId, setPw, setPwCheck, setNick, setEmail,setPh
                     setPhoneNum(e.target.value);
                 }}
                 placeholder="Phone Number"
+                required
             />
             {/*<div>성별 :</div>*/}
             {/*<select name={"gender"}>*/}

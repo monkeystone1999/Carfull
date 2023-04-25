@@ -5,6 +5,7 @@
 }
 .input_box{
     position: relative;
+    height: 100px;
 }
 .input_style{
     border: none;
@@ -14,11 +15,11 @@
 .label{
     position: absolute;
     left: 0;
-    bottom: 0;
+    top: 0;
 }
-.input_style>.input_underline{
+.input_underline{
     position: absolute;
-    bottom: 0px;
+    top: 25px;
     height: 2px;
     left: 0;
     background-color: #8B00BDFF;
@@ -28,8 +29,8 @@
     width: 100%;
 }
 
-.input_style:focus ~ .label,
-.input_style:valid ~ .label{
+.input_style:focus ~ .placeholder,
+.input_style:valid ~ .placeholder{
     transform: translateY(-20px);
 }
 .input_style:focus{
@@ -38,4 +39,14 @@
 .boxing{
     padding: 1px;
     margin: 0 auto;
+}
+.placeholder{
+    margin-top: 0;
+    margin-bottom: 1rem;
+    position: absolute;
+    transform: translateY(0);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    left: 0;
+    top: 0;
 }

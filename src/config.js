@@ -12,4 +12,5 @@ export const API = {
     RECRU_APL : '/withcar/recruit/apply',
     RECRU_OWN : '/withcar/recruit/isowner',
     INFO : '/withcar/myInfo',
+    CHANGE_PAWD : '/withcar/myInfo/change-pw',
 }
