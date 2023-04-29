@@ -1,18 +1,16 @@
-import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
-function Recruit() {
-
+function Recruit(){
     const motherBoard = useSelector((state)=>state.MB.board)
-    return (
+    return(
         <>
             {
                 motherBoard.map((value) => {
                     return value.map(result =>{
                         return (
                             <>
-                                <Recruit_list boardTitle={result.boardTitle}>
-                                </Recruit_list>
+                                <div>{result.boardTitle}</div>
                                 <Link to={`/detail/${result.recruitCarfullID}`}><button>상세보기</button></Link>
                                 <br/>
                             </>)
@@ -22,13 +20,5 @@ function Recruit() {
         </>
     )
 }
-function Recruit_list({boardTitle}) {
-    return (
-        <>
-            <div>{boardTitle}</div>
-        </>
-    )
-}
-
 
 export {Recruit}
