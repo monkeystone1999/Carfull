@@ -1,5 +1,5 @@
-import React, {useContext, useEffect, useState} from "react";
-import {redirect, useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
 function Sign(){
@@ -29,7 +29,7 @@ function Sign(){
         <>
             <SignInput setID={setID} setPW={setPW} setPwCheck={setPwCheck}
                        setNick={setNick} setEmail={setEmail} setPhoneNum={setPhoneNum}></SignInput>
-            <button type={"submit"} onClick={(event)=>{
+            <button type={"submit"} onClick={()=>{
                 SignSubmit(formData,setResult);
             }}></button>
         </>
@@ -43,7 +43,7 @@ function SignSubmit(formData, setResult){
         data: formData,
         //     요까지
     })
-        .then((data) => {
+        .then(() => {
             setResult(true);
             alert("성공하셨습니다 다시 로그인 해주세요");
         })

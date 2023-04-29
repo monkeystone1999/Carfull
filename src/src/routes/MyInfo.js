@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import axios from "axios";
 import {API} from "../../config";
-import {callInfo, setBoard, setInfo} from "../../reducer/store";
+import {callInfo, setInfo} from "../../reducer/store";
 
 
 function MyInfo(){
