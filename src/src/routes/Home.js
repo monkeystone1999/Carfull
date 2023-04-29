@@ -3,7 +3,6 @@ import {API} from "../../config";
 import {setBoard} from "../../reducer/store";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
-import {useAuthState} from "../../AuthContext";
 
 
 function Home(){

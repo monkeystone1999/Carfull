@@ -2,7 +2,6 @@ import {useAuthDispatch, useAuthState} from "../../AuthContext";
 import {redirect, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {useSelector} from "react-redux";
 
 function Login(){
     const formData = new FormData();
@@ -17,7 +16,7 @@ function Login(){
         if(isLogin){
             return navigate('/');
         }
-    },[]);
+    },[isLogin]);
 
     return (
         <>
@@ -34,7 +33,6 @@ function Login(){
                 }} required
             />
             <button type={"submit"} onClick={(event)=>{
-                event.preventDefault();
                 LoginSubmit(formData, setLogin);
             }}>로그인!</button>
         </>

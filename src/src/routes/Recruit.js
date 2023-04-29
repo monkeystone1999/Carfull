@@ -1,20 +1,22 @@
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import {callBoard} from "../../reducer/store";
 
-function Recruit(){
-    const motherBoard = useSelector((state)=>state.MB.board)
-    return(
+function Recruit() {
+    const motherBoard = useSelector((state) => state.MB);
+    callBoard();
+    return (
         <>
             {
                 motherBoard.map((value) => {
-                    return value.map(result =>{
-                        return (
-                            <>
-                                <div>{result.boardTitle}</div>
-                                <Link to={`/detail/${result.recruitCarfullID}`}><button>상세보기</button></Link>
-                                <br/>
-                            </>)
-                    })
+                    return (
+                        <>
+                            <div>{value.boardTitle}</div>
+                            <Link to={`/detail/${value.recruitCarfullID}`}>
+                                <button>상세보기</button>
+                            </Link>
+                            <br/></>
+                    )
                 })
             }
         </>

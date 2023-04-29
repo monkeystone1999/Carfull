@@ -4,16 +4,15 @@
 }
 /*input 을 쓸때는 무조건 wrap 으로 감싸기 */
 /*//C9ACFFFF 연분홍  C954FFFF 진분홍 C51CFFFF*/
-a{
+.anchor{
     text-decoration-line: none;
     color: inherit;
     text-decoration-color: #000000;
     transition-property: text-shadow;
     transition-duration: 0.5s;
     position: relative;
-
 }
-a:after{
+.anchor:after{
     position: absolute;
     content: "";
     bottom: -3px;
@@ -25,16 +24,47 @@ a:after{
     transform: scaleX(0);
     width: 100%;
 }
-a:hover{
+.anchor:hover{
     text-shadow:
             0.025em 0.025em 0 #C9ACFFFF,
             0.05em 0.05em 0 #8B00BDFF,
             0.075em 0.075em 0 #C51CFFFF,
             0.1em 0.1em 0 #C954FFFF;
 }
-a:hover::after{
+.anchor:hover::after{
     transform: scaleX(1);
 }
+/*a{*/
+/*    text-decoration-line: none;*/
+/*    color: inherit;*/
+/*    text-decoration-color: #000000;*/
+/*    transition-property: text-shadow;*/
+/*    transition-duration: 0.5s;*/
+/*    position: relative;*/
+
+/*}*/
+/*a:after{*/
+/*    position: absolute;*/
+/*    content: "";*/
+/*    bottom: -3px;*/
+/*    height: 2px;*/
+/*    left: 0;*/
+/*    background-color: black;*/
+/*    transition-duration: 0.2s;*/
+/*    transition-timing-function: ease-in;*/
+/*    transform: scaleX(0);*/
+/*    width: 100%;*/
+/*}*/
+/*a:hover{*/
+/*    text-shadow:*/
+/*            0.025em 0.025em 0 #C9ACFFFF,*/
+/*            0.05em 0.05em 0 #8B00BDFF,*/
+/*            0.075em 0.075em 0 #C51CFFFF,*/
+/*            0.1em 0.1em 0 #C954FFFF;*/
+/*}*/
+/*a:hover::after{*/
+/*    transform: scaleX(1);*/
+/*}*/
 input[type="search"]{
     border: none;
     border-bottom: 1px black solid;
@@ -87,7 +117,6 @@ nav{
     padding: 40px;
     background-color: white;
     display: flex;
-    position: fixed;;
     height: 100px;
     padding: 1px;
     width: 100vw;

@@ -30,7 +30,6 @@ function Sign(){
             <SignInput setID={setID} setPW={setPW} setPwCheck={setPwCheck}
                        setNick={setNick} setEmail={setEmail} setPhoneNum={setPhoneNum}></SignInput>
             <button type={"submit"} onClick={(event)=>{
-                event.preventDefault();
                 SignSubmit(formData,setResult);
             }}></button>
         </>
