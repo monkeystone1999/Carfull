@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'style-components';
+import styled from 'styled-components';
 import RecruitListItem from './RecruitListItem';
 
 const Wrapper = styled.div`
@@ -24,7 +24,7 @@ function RecruitList(props) {
                 return (
                     <RecruitListItem
                         key={recruitPost.id}
-                        post={recruitPost}
+                        recruitPost={recruitPost}
                         onClick={() => {
                             onClickItem(recruitPost);
                         }}
