@@ -5,7 +5,7 @@ import RecruitListItem from './RecruitListItem';
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: center;
 
     & > * {

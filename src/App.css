@@ -87,7 +87,7 @@ nav{
     padding: 40px;
     background-color: white;
     display: flex;
-    position: fixed;;
+    /* position: fixed; */
     height: 100px;
     padding: 1px;
     width: 100vw;

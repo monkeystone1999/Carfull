@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {API} from "../../config";
 import {setBoard} from "../../reducer/store";
 import RecruitList from "../components/recruit/RecruitList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -32,12 +32,14 @@ function Recruit(){
     const [recruitBoard, setRecruitBoard] = useState([]);
     const navigate = useNavigate();
 
-    axios({
-    url: `${API.RECRUIT}`,
-    method: 'get',
-    }).then(res => {
-        setRecruitBoard(res.data);
-    }).catch(err => console.log(err))
+    useEffect(() => {
+        axios({
+            url: `${API.RECRUIT}`,
+            method: 'get',
+            }).then(res => {
+                setRecruitBoard(res.data);
+            }).catch(err => console.log(err))
+      }, []);
 
     return (
         <Wrapper>
@@ -50,7 +52,7 @@ function Recruit(){
                 />
             </Container>
         </Wrapper>
-    )
+    );
 
     // const motherBoard = useSelector((state)=>state.MB.board)
     // const dispatch = useDispatch();
@@ -85,4 +87,4 @@ function Recruit(){
 //     }).catch(err => console.log(err))
 // }
 
-export {Recruit}
+export {Recruit};
