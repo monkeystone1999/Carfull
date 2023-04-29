@@ -10,23 +10,23 @@ export function Navbar(){
     }
     return(
         <>
-            <nav>
+            <nav className={"empty"}>
                 <div className={"first_nav"}>
                     {
-                        Login ? (<>
-                                <Link onClick={setLogOut} to={"/"}>Logout</Link>
-                            <Link to={"/MyInfo"}></Link>
-                            </>)
-                            : (<>
-                            <Link to={"/login"}>Login</Link>
-                            </>)
+                        Login ? <Link onClick={setLogOut} to={"/"} className={"anchor"}>Logout</Link>
+                            : <Link to={"/login"} className={"anchor"}>Login</Link>
                     }
-                    <Link to={"/sign"}>Sign Up</Link>
+                    {
+                        Login ?
+                            <Link to={"/MyInfo"} className={"anchor"}>마이페이지</Link>
+                            : null
+                    }
+                    <Link to={"/sign"} className={"anchor"}>Sign Up</Link>
                 </div>
                 <div className={"main_nav"}>
-                    <Link to={"/"}>Logo</Link>
-                    <Link to={"/write"}>Logo</Link>
-                    <Link to={"/recruit"}>
+                    <Link to={"/"} className={"anchor"}>Logo</Link>
+                    <Link to={"/write"} className={"anchor"}>글쓰기</Link>
+                    <Link to={"/recruit"} className={"anchor"}>
                         둘러보기
                     </Link>
                 </div>

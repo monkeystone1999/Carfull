@@ -53,38 +53,6 @@ function Recruit(){
             </Container>
         </Wrapper>
     );
-
-    // const motherBoard = useSelector((state)=>state.MB.board)
-    // const dispatch = useDispatch();
-    // useEffect(()=>{
-    //     BaseHome(dispatch);
-    // },[])
-
-    // return(
-    //     <>
-    //         {
-    //             motherBoard.map((value) => {
-    //                 return value.map(result =>{
-    //                     return (
-    //                         <>
-    //                             <div>{result.boardTitle}</div>
-    //                             <Link to={`/detail/${result.recruitCarfullID}`}><button>상세보기</button></Link>
-    //                             <br/>
-    //                         </>)
-    //                 })
-    //             })
-    //         }
-    //     </>
-    // )
 }
-
-// const BaseHome = (dispatch)=>{
-//     axios({
-//         url: `${API.RECRUIT}`,
-//         method: 'get',
-//     }).then(res => {
-//         dispatch(setBoard(res.data))
-//     }).catch(err => console.log(err))
-// }
 
 export {Recruit};

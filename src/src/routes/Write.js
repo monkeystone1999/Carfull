@@ -24,7 +24,7 @@ function Write(){
         if(isWrite){
             navigate("/")
         }
-    }, [])
+    }, [isWrite])
     return (
         <>
             <WriteInput setTitle={setTitle} setFee={setFee} setLimit={setLimit} setStart={setStart}
