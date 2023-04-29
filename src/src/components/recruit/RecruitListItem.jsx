@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'style-components';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
     width: calc(100% -32px);
@@ -23,7 +23,13 @@ const TitleText = styled.p`
 `;
 
 function RecruitListItem(props) {
-    
+    const { recruitPost, onClick } = props;
+
+    return (
+        <Wrapper onClick={onClick}>
+            <TitleText>{recruitPost.boardTitle}</TitleText>
+        </Wrapper>
+    );
 }
 
 export default RecruitListItem;
