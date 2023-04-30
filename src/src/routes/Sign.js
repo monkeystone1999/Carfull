@@ -11,7 +11,9 @@ function Sign(){
     const [isGender, setGender] = useState("");
     const [isEmail, setEmail] = useState("");
     const [isPhoneNum, setPhoneNum] = useState("");
+    const [isAgree, setAgree] = useState(false);
     const [isResult, setResult] = useState(false);
+
     const navigate = useNavigate();
     const formData = new FormData();
     formData.append('id', isID);
@@ -21,6 +23,7 @@ function Sign(){
     formData.append('gender', isGender);
     formData.append('email', isEmail);
     formData.append('phone_number', isPhoneNum);
+    formData.append('agree', isAgree);
 
     useEffect(() => {
         if (isResult) {
@@ -51,6 +54,9 @@ function Sign(){
                 }}
                 phoneOnChange = {(event) => {
                     setPhoneNum(event.target.value);
+                }}
+                checkBoxOnChange = {(event) => {
+                    setAgree(event.target.value);
                 }}
                 onClick = {() => {
                     SignSubmit(formData, setResult);

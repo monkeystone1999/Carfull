@@ -5,7 +5,7 @@ function SignRadioInput(props) {
     const { genderOnChange } = props;
 
     return (
-        <div>
+        <div className={stl.signRadioWrapper}>
             <input type="radio" className={stl.signRadioInput} name={'gender'} value={"man"} id={"man"} onChange={genderOnChange}/>
             <label htmlFor="man" className={stl.signRadioLabel}>남자</label>
             <input type="radio" className={stl.signRadioInput} name={'gender'} value={"woman"} id={"woman"} onChange={genderOnChange}/>

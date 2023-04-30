@@ -24,7 +24,7 @@
     padding-bottom: 1px;
     border-color: initial;
     display: flex;
-    color: rgb(216, 213, 208);
+    color: rgb(78, 78, 78);
     background-color: transparent;
     outline-color: initial;
     caret-color: rgb(216, 213, 208);
@@ -91,11 +91,49 @@
     outline: none;
 }
 
+.signRadioWrapper {
+    display: flex;
+    margin-bottom: 10px;
+    width: 300px;
+    padding: 6px;
+}
+
+.signRadioLabel {
+    display: flex;
+    padding: 6px;
+    padding-bottom: 2px;
+    margin: 3px;
+    margin-bottom: 8px;
+}
+
+.signRadioInput {
+    display: flex;
+    padding: 6px;
+    padding-bottom: 2px;
+    margin: 3px;
+    margin-bottom: 8px;
+}
+
+.signAgreementTextArea {
+    display: flex;
+    margin: 40px;
+    width: 300px;
+    height: 100px;
+}
+
+.signCheckBox {
+    display: flex;
+    margin-bottom: 40px;
+    width: 40px;
+    height: 40px;
+}
+
 .signFormWrapper {
-    width: 40%;
+    padding: 40px;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     border: 1px solid grey;
 }
@@ -105,6 +143,7 @@
     flex-direction: row;
     align-items: center;
     text-align: center;
+    justify-content: center;
 }
 
 .signSubmitButton {
@@ -114,10 +153,13 @@
     margin-bottom: 8px;
     display: flex;
     width: 300px;
-    height: 150px;
+    height: 100px;
     text-align: center;
+    align-items: center;
+    justify-content: center;
     color: white;
     font-size: 24px;
     font-weight: bold;
     background-color: #018b54;
 }
+
