@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import SignUpForm from "../components/sign/SignUpForm";
 
 function Sign(){
     const [isID, setID] = useState("");
     const [isPW, setPW] = useState("");
     const [isPwCheck, setPwCheck] = useState("");
     const [isNick, setNick] = useState("");
+    const [isGender, setGender] = useState("");
     const [isEmail, setEmail] = useState("");
     const [isPhoneNum, setPhoneNum] = useState("");
     const [isResult, setResult] = useState(false);
@@ -16,6 +18,7 @@ function Sign(){
     formData.append('pw', isPW);
     formData.append('pw_check', isPwCheck);
     formData.append('nick', isNick);
+    formData.append('gender', isGender);
     formData.append('email', isEmail);
     formData.append('phone_number', isPhoneNum);
 
@@ -27,11 +30,36 @@ function Sign(){
 
     return(
         <>
-            <SignInput setID={setID} setPW={setPW} setPwCheck={setPwCheck}
-                       setNick={setNick} setEmail={setEmail} setPhoneNum={setPhoneNum}></SignInput>
-            <button type={"submit"} onClick={()=>{
+            <SignUpForm
+                idOnChange = {(event) => {
+                    setID(event.target.value);
+                }}
+                pwOnChange = {(event) => {
+                    setPW(event.target.value);
+                }}
+                pwCheckOnChange = {(event) => {
+                    setPwCheck(event.target.value);
+                }}
+                nickOnChange = {(event) => {
+                    setNick(event.target.value);
+                }}
+                genderOnChange = {(event) => {
+                    setGender(event.target.value);
+                }}
+                emailOnChange = {(event) => {
+                    setEmail(event.target.value);
+                }}
+                phoneOnChange = {(event) => {
+                    setPhoneNum(event.target.value);
+                }}
+                onClick = {() => {
+                    SignSubmit(formData, setResult);
+                }}
+            />
+
+            {/* <button type={"submit"} onClick={()=>{
                 SignSubmit(formData,setResult);
-            }}></button>
+            }}/> */}
         </>
     )
 }
@@ -50,43 +78,6 @@ function SignSubmit(formData, setResult){
         .catch((e) => {
             console.log(e);
         });
-}
-function SignInput({setID, setPW,setPwCheck, setNick, setEmail,setPhoneNum}){
-    return (
-        <>
-            <input
-            type={"text"}
-            onChange={(event)=>{
-                setID(event.target.value);
-            }}
-            /><input
-            type={"text"}
-            onChange={(event)=>{
-                setPW(event.target.value);
-            }}
-        /><input
-            type={"text"}
-            onChange={(event)=>{
-                setPwCheck(event.target.value);
-            }}
-        /><input
-            type={"text"}
-            onChange={(event)=>{
-                setNick(event.target.value);
-            }}
-        /><input
-            type={"text"}
-            onChange={(event)=>{
-                setEmail(event.target.value);
-            }}
-        /><input
-            type={"text"}
-            onChange={(event)=>{
-                setPhoneNum(event.target.value);
-            }}
-        />
-        </>
-    )
 }
 
 export {Sign}

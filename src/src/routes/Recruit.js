@@ -1,7 +1,5 @@
-import {useSelector} from "react-redux";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {API} from "../../config";
-import {setBoard} from "../../reducer/store";
 import RecruitList from "../components/recruit/RecruitList";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
