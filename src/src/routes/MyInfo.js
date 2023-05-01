@@ -16,11 +16,11 @@ function MyInfo(){
     callInfo();
     return (
         <>
-            {Myinfo.email}
-            {Myinfo.nick}
-            {Myinfo.phoneNumber}
-            {Myinfo.userId}
-            
+            {Myinfo.email} <br/>
+            {Myinfo.nick}<br/>
+            {Myinfo.phoneNumber}<br/>
+            {Myinfo.userId}<br/>
+            <Link to={"/MyInfo/change_pw"}>비밀번호 변경하기</Link>
         </>
     )
 }
