@@ -13,6 +13,7 @@ import {Sign} from "./routes/Sign";
 import {Write} from "./routes/Write";
 import {MyInfo} from "./routes/MyInfo";
 import {Home} from "./routes/Home";
+import {MyInfoChangePW} from "./routes/MyInfoChangePW";
 
 
 
@@ -29,6 +30,7 @@ function Main(){
                 <Route path={"/detail/:detail"} element={<Detail></Detail>}></Route>
                 <Route path={"/write"} element={<Write></Write>}></Route>
                 <Route path={"/MyInfo"} element={<MyInfo></MyInfo>}></Route>
+                <Route path={"/MyInfo/change_pw"} element={<MyInfoChangePW></MyInfoChangePW>}></Route>
                 {/*restart*/}
             </Routes>
         </>

@@ -3,6 +3,7 @@ import {useEffect} from "react";
 import axios from "axios";
 import {API} from "../../config";
 import {callInfo, setInfo} from "../../reducer/store";
+import {Link} from "react-router-dom";
 
 
 function MyInfo(){
@@ -19,6 +20,7 @@ function MyInfo(){
             {Myinfo.nick}
             {Myinfo.phoneNumber}
             {Myinfo.userId}
+            
         </>
     )
 }
