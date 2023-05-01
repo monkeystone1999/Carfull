@@ -62,10 +62,6 @@ function Sign(){
                     SignSubmit(formData, setResult);
                 }}
             />
-
-            {/* <button type={"submit"} onClick={()=>{
-                SignSubmit(formData,setResult);
-            }}/> */}
         </>
     )
 }
