@@ -13,6 +13,11 @@ import "./slideShow.css";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import SlideItem from "./SlideItem";
 
+// import img resources
+import img1 from "./seatbelt.jpg";
+import img2 from "./drink-drive.jpg";
+import img3 from "./safety-drive.jpg";
+
 export default function SlideShow() {
   return (
     <>
@@ -34,9 +39,9 @@ export default function SlideShow() {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide><SlideItem src={`https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_960_720.jpg`}/></SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
+        <SwiperSlide><SlideItem src={img3}/></SwiperSlide>
+        <SwiperSlide><SlideItem src={img1}/></SwiperSlide>
+        <SwiperSlide><SlideItem src={img2}/></SwiperSlide>
       </Swiper>
     </>
   );
