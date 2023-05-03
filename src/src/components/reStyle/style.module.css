@@ -1,0 +1,245 @@
+
+.wrapper{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: static;
+}
+.wrapper_input{
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: static;
+
+}
+.wrapper_input .input_data{
+    position: relative;
+    height: 60px;
+    width: 300px;
+}
+.input_data ._input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.input_data ._input_lb {
+    position: absolute;
+    bottom: 20px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    width: 350px;
+}
+.input_data input:focus ~ ._input_lb,
+.input_data input:valid ~ ._input_lb{
+    transform: translateY(-25px);
+}
+
+
+
+.input_data input:focus ~ .underline,
+.input_data input:valid ~ .underline{
+    transition: transform 0.3s ease;
+    transform: scaleX(1);
+}
+
+
+
+._input:focus,
+._input:valid{
+    outline: none;
+    border-bottom: 0;
+}
+.input_data .underline{
+    position: absolute;
+    top: 65%;
+    left: 0%;
+    transform: translate(-100%, -50%);
+    background-color: blueviolet;
+    width: 103%;
+    height: 3px;
+    border-radius: 20px;
+    transform: scaleX(0);
+}
+
+.wrapper2{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    flex-wrap: wrap;
+}
+.content_outline{
+    padding: 20px;
+    width: 300px;
+    height: 100px;
+    border: 1px solid white;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+.content_outline:hover{
+    border: 1px solid black;
+}
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.content .title{
+    padding-right: 30px;
+}
+
+.radioStyle{
+    vertical-align: middle;
+    appearance: none;
+    border: max(2px, 0.1em) solid black;
+    border-radius: 50%;
+    width: 1.3em;
+    height: 1.3em;
+}
+.radioStyle:checked{
+    border: 1em solid blueviolet;
+}
+
+.heavyText{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Sunflower', sans-serif;
+    font-size: 14px;
+    padding: 15px;
+}
+.easyText{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Sunflower', sans-serif;
+    font-size: 20px;
+}
+.TextBox{
+    width: 300px;
+    height: 150px;
+}
+.areaBox{
+    margin: 0 auto;
+    width: 300px;
+    height: 250px;
+}
+.signCheckBox{
+    position: relative;
+    width: 100px;
+    height: 70px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 5px;
+}
+.SubmitBox{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+.SubmitButton> button{
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    border: 0px;
+}
+.SubmitButton> button:hover{
+    background-color: #dda1ff;
+}
+.SubmitButton> button:active{
+    background-color: blueviolet;
+}
+
+.SignBigBox{
+    margin: 20px auto;
+    border: 3px solid black;
+    width: 50%;
+    height: 130%;
+    padding: 25px;
+}
+.LoginBox{
+    margin: 30px auto;
+    border: 3px solid black;
+    width: 50%;
+    height: 50%;
+    padding: 100px 20px;
+}
+.LoginButton{
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 30px;
+}
+.commandBox{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    height: 100%;
+    margin-bottom: 15px;
+}
+.commandArea{
+    width: 100%;
+    height: 80%;
+    padding: 9px;
+}
+.commandBox>label{
+    padding-right: 250px;
+}
+.WriteBigBox{
+    margin: 20px auto;
+    border: 3px solid black;
+    width: 50%;
+    height: 130%;
+    padding: 25px;
+}
+.commandArea:focus,
+.commandArea:valid{
+    outline-color: #dda1ff;
+    outline-width: 3px;
+}
+.recruitBigBox{
+    border: 2px solid black;
+    margin: 20px auto;
+    width: 70%;
+    padding: 30px;
+}
+.recruitBox {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 35px
+}
+.recruitBox:hover{
+    background-color: #ececec;
+}
+.fromTo{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 20px;
+}
+.fromTo>div{
+    padding-right: 30px;
+}
+.recruitTitle{
+}

@@ -3,6 +3,7 @@ import {redirect, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {API} from "../../config";
+import {DetailTotal} from "../components/reStyle/detail/detailTotal";
 
 function Detail(){
     const isLogin = useAuthState();
@@ -38,12 +39,10 @@ function Detail(){
     }
     return (
         <>
-            <div>사람 수 제한 : {isDetail.personLimit}</div>
-            <div>가격 : {isDetail.fee}</div>
-            <div>출발시간 : {isDetail.startTime}</div>
-            <div>출발지 : {isDetail.startPoint}</div>
-            <div>도착지 : {isDetail.endPoint}</div>
-            {isLogin ? Mine() : null}
+            <DetailTotal
+                Mine = {Mine}
+                Detail = {isDetail}
+            />
         </>
     )
 }

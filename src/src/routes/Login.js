@@ -2,6 +2,7 @@ import {useAuthDispatch, useAuthState} from "../../AuthContext";
 import {redirect, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {LoginTotal} from "../components/reStyle/login/loginTotal";
 import LoginForm from "../components/login/LoginForm";
 
 function Login(){
@@ -21,18 +22,21 @@ function Login(){
     },[isLogin]);
 
     return (
-        <LoginForm
-            idOnChange = {(event) => {
-                setID(event.target.value);
-            }}
-            pwOnChange = {(event) => {
-                setPW(event.target.value);
-            }}
-            onClick = {() => {
-                LoginSubmit(formData, setLogin)
-            }}
-        />
-    );
+        <>
+
+            <LoginTotal
+                idOnChange = {(event) => {
+                    setID(event.target.value);
+                }}
+                pwOnChange = {(event) => {
+                    setPW(event.target.value);
+                }}
+                onClick = {() => {
+                    LoginSubmit(formData, setLogin);
+                }}
+            />
+        </>
+    )
 }
 
 function LoginSubmit(formData, setLogin){
