@@ -5,6 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  /*야놀자 글씨체*/
+  /*font-family: 'Nunito', sans-serif;*/
+  /*font-family: 'Sunflower', sans-serif;*/
+
+  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Nanum Myeongjo', serif;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Sunflower', sans-serif;
+  font-size: 25px;
 }
 
 code {

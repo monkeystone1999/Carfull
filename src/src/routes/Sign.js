@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import SignUpForm from "../components/sign/SignUpForm";
+import {SignTotal} from "../components/reStyle/sign/signTotal";
+import {API} from "../../config";
 
 function Sign(){
     const [isID, setID] = useState("");
@@ -33,7 +34,7 @@ function Sign(){
 
     return(
         <>
-            <SignUpForm
+            <SignTotal
                 idOnChange = {(event) => {
                     setID(event.target.value);
                 }}
@@ -56,23 +57,21 @@ function Sign(){
                     setPhoneNum(event.target.value);
                 }}
                 checkBoxOnChange = {(event) => {
+                    // label 에서 나오는 동의 값은
                     setAgree(event.target.value);
+                    console.log(event.target.value);
                 }}
                 onClick = {() => {
                     SignSubmit(formData, setResult);
                 }}
             />
-
-            {/* <button type={"submit"} onClick={()=>{
-                SignSubmit(formData,setResult);
-            }}/> */}
         </>
     )
 }
 function SignSubmit(formData, setResult){
     axios({
         // 이 부분이 config 부분
-        url: `/withcar/login-process`,
+        url: `${API.SIGN}`,
         method: "post",
         data: formData,
         //     요까지

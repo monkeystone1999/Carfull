@@ -1,29 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import {API} from "../../config";
-import RecruitList from "../components/recruit/RecruitList";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import axios from "axios";
-
-const Wrapper = styled.div`
-    padding: 16px;
-    width: calc(100% - 32px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`;
-
-const Container = styled.div`
-    width: 100%;
-    max-width: 720px;
-
-    & > * {
-        :not(:last-child) {
-            margin-bottom: 16px;
-        }
-    }
-`;
+import {RecruitTotal} from "../components/reStyle/recruit/recruitTotal";
 
 function Recruit(){
 
@@ -40,16 +19,12 @@ function Recruit(){
       }, []);
 
     return (
-        <Wrapper>
-            <Container>
-                <RecruitList
-                    recruitPosts = {recruitBoard}
-                    onClickItem = {(item) => {
-                        navigate(`/detail/${item.recruitCarfullID}`);
-                    }}
-                />
-            </Container>
-        </Wrapper>
+        <RecruitTotal
+            recruitLists={recruitBoard}
+            onClickItem = {(item) =>{
+                navigate(`/detail/${item.recruitCarfullID}`);
+            }}
+        />
     );
 }
 
