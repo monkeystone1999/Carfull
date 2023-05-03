@@ -3,9 +3,10 @@ import stl from '../sign/SignForm.module.css';
 import SignTextLabel from '../sign/SignTextLabel';
 import SignTextInput from '../sign/SignTextInput';
 import SignSubmitButton from '../sign/SignSubmitButton';
+import DateInput from './DateInput';
 
 function RecruitWriteForm(props) {
-    const {titleOnChange, feeOnChange, limitOnChange, startPointOnChange, endPointOnChange, commentOnChange, onClick} = props;
+    const {titleOnChange, feeOnChange, limitOnChange, startPointOnChange, endPointOnChange, dateOnChange, commentOnChange, onClick} = props;
     
     return (
         <div className={stl.signFormContainer}>
@@ -48,6 +49,13 @@ function RecruitWriteForm(props) {
                     <SignTextInput
                         placeHolder={`도착예정인 장소를 입력하세요`}
                         onChange={endPointOnChange}
+                    />
+                </div>
+
+                <div>
+                    <SignTextLabel labelText = {`출발 예정 시간`}/>
+                    <DateInput
+                        dateOnChange={dateOnChange}
                     />
                 </div>
                 

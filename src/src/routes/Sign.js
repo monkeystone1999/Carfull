@@ -23,7 +23,7 @@ function Sign(){
     formData.append('gender', isGender);
     formData.append('email', isEmail);
     formData.append('phone_number', isPhoneNum);
-    formData.append('agree', isAgree);
+    // formData.append('agree', isAgree);
 
     useEffect(() => {
         if (isResult) {
@@ -54,6 +54,7 @@ function Sign(){
                 }}
                 phoneOnChange = {(event) => {
                     setPhoneNum(event.target.value);
+                    console.log(isPhoneNum);
                 }}
                 checkBoxOnChange = {(event) => {
                     setAgree(event.target.value);
@@ -68,7 +69,7 @@ function Sign(){
 function SignSubmit(formData, setResult){
     axios({
         // 이 부분이 config 부분
-        url: `/withcar/login-process`,
+        url: `/withcar/signup`,
         method: "post",
         data: formData,
         //     요까지
