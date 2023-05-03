@@ -11,6 +11,7 @@
     transition-property: text-shadow;
     transition-duration: 0.5s;
     position: relative;
+    padding-right: 10px;
 }
 .anchor:after{
     position: absolute;
@@ -34,37 +35,7 @@
 .anchor:hover::after{
     transform: scaleX(1);
 }
-/*a{*/
-/*    text-decoration-line: none;*/
-/*    color: inherit;*/
-/*    text-decoration-color: #000000;*/
-/*    transition-property: text-shadow;*/
-/*    transition-duration: 0.5s;*/
-/*    position: relative;*/
 
-/*}*/
-/*a:after{*/
-/*    position: absolute;*/
-/*    content: "";*/
-/*    bottom: -3px;*/
-/*    height: 2px;*/
-/*    left: 0;*/
-/*    background-color: black;*/
-/*    transition-duration: 0.2s;*/
-/*    transition-timing-function: ease-in;*/
-/*    transform: scaleX(0);*/
-/*    width: 100%;*/
-/*}*/
-/*a:hover{*/
-/*    text-shadow:*/
-/*            0.025em 0.025em 0 #C9ACFFFF,*/
-/*            0.05em 0.05em 0 #8B00BDFF,*/
-/*            0.075em 0.075em 0 #C51CFFFF,*/
-/*            0.1em 0.1em 0 #C954FFFF;*/
-/*}*/
-/*a:hover::after{*/
-/*    transform: scaleX(1);*/
-/*}*/
 input[type="search"]{
     border: none;
     border-bottom: 1px black solid;
@@ -113,13 +84,6 @@ input[type="search"]:focus{
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-.left_side{
-    width: 350px;
-    font-size: 1.5rem;
-}
-.right_side{
-    width: 500px;
 }
 .flex_r{
     display: flex;
@@ -189,4 +153,54 @@ input[type="search"]:focus{
         margin-top: 4px;
         margin-right: 4px;
     }
+}
+
+.checkbox_label{
+    cursor:pointer;
+}
+
+.practice{
+    z-index: -1;
+    width: 50px;
+    height: 100px;
+    bottom: 15px;
+    left: 23px;
+    position: absolute;
+    border:solid white;
+    border-width : 0 10px 10px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+}
+input[id="checkBox_onClick"]{
+    visibility: hidden;
+}
+
+input[id="checkBox_onClick"]:checked ~ .onClick{
+    border : solid blueviolet;
+    border-width : 0 10px 10px 0;
+}
+
+input[id="checkBox_Man"]{
+    visibility: hidden;
+}
+
+input[id="checkBox_Man"]:checked ~ .Man{
+    border : solid blueviolet;
+    border-width : 0 10px 10px 0;
+}
+
+input[id="checkBox_Woman"]{
+    visibility: hidden;
+}
+
+input[id="checkBox_Woman"]:checked ~ div{
+    border : solid blueviolet;
+    border-width : 0 10px 10px 0;
+}
+
+.LightFont{
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Sunflower', sans-serif;
 }

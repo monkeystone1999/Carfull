@@ -13,7 +13,6 @@ function MyInfo(){
     useEffect(()=>{
         BaseMyInfo(access_token, dispatch);
     },[])
-    callInfo();
     return (
         <>
             {Myinfo.email} <br/>
