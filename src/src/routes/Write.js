@@ -4,6 +4,8 @@ import axios from "axios";
 import {API} from "../../config";
 import {WriteTotal} from "../components/reStyle/write/writeTotal";
 
+import RecruitWriteForm from "../components/recruit-write/RecruitWriteForm";
+
 
 function Write(){
     const [isTitle, setTitle] = useState("");
@@ -11,6 +13,7 @@ function Write(){
     const [isLimit, setLimit] = useState("");
     const [isStart, setStart] = useState("");
     const [isEnd, setEnd] = useState("");
+    const [isDate, setDate] = useState("");
     const [isComment, setComment] = useState("");
     const formData = new FormData();
     const navigate = useNavigate();
@@ -20,6 +23,7 @@ function Write(){
     formData.append("personLimit", isLimit);
     formData.append("startPoint", isStart);
     formData.append("endPoint", isEnd);
+    formData.append("startTime", isDate);
     formData.append("comment", isComment);
     useEffect(()=>{
         if(isWrite){
@@ -27,36 +31,40 @@ function Write(){
         }
     }, [isWrite])
     return (
-        <>
-            <WriteTotal
-                titleOnChange = {(event) => {
-                    setTitle(event.target.value);
-                }}
-                priceOnChange = {(event) => {
-                    setFee(event.target.value);
-                }}
-                limitOnChange = {(event) => {
-                    setLimit(event.target.value);
-                }}
-                startOnChange = {(event) => {
-                    setStart(event.target.value);
-                }}
-                endOnChange = {(event) => {
-                    setEnd(event.target.value);
-                }}
-                areaOnChange = {(event) => {
-                    setComment(event.target.value);
-                }}
-                onClick = {() => {
-                WriteSubmit(formData, setWrite);
-                }}
-            />
-        </>
+        <RecruitWriteForm
+            titleOnChange={(event) => {
+                setTitle(event.target.value);
+            }}
+            feeOnChange={(event) => {
+                setFee(event.target.value);
+            }}
+            limitOnChange={(event) => {
+                setLimit(event.target.value);
+            }}
+            startPointOnChange={(event) => {
+                setStart(event.target.value);
+            }}
+            endPointOnChange={(event) => {
+                setEnd(event.target.value);
+            }}
+            commentOnChange={(event) => {
+                setComment(event.target.value);
+            }}
+            dateOnChange={(event) => {
+                setDate(event);
+            }}
+            onClick={() => {
+                WriteSubmit(formData, setWrite)
+            }}
+        />
+
+        // <>
+        //     <WriteInput setTitle={setTitle} setFee={setFee} setLimit={setLimit} setStart={setStart}
+        //                 setEnd={setEnd} setComment={setComment} ></WriteInput>
+        //     <button type={"submit"} onClick={()=>{WriteSubmit(formData, setWrite)}}></button>
+        // </>
     )
-
 }
-
-export {Write}
 
 const WriteSubmit = (formData, setResult)=>{
     const Auth = localStorage.getItem("access_token");
@@ -74,3 +82,5 @@ const WriteSubmit = (formData, setResult)=>{
     }).catch(err => {
     })
 }
+
+export {Write}

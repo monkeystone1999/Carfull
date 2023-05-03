@@ -24,7 +24,7 @@ function Sign(){
     formData.append('gender', isGender);
     formData.append('email', isEmail);
     formData.append('phone_number', isPhoneNum);
-    formData.append('agree', isAgree);
+    // formData.append('agree', isAgree);
 
     useEffect(() => {
         if (isResult) {
@@ -55,6 +55,7 @@ function Sign(){
                 }}
                 phoneOnChange = {(event) => {
                     setPhoneNum(event.target.value);
+                    console.log(isPhoneNum);
                 }}
                 checkBoxOnChange = {(event) => {
                     // label 에서 나오는 동의 값은

@@ -2,10 +2,10 @@ import React from 'react';
 import stl from './SignForm.module.css';
 
 function SignPhoneInput(props) {
-    const { placeHolder, phoneOnChange } = props;
+    const { placeHolder, onChange } = props;
 
     return (
-        <input type="text" onChange={phoneOnChange} className={stl.signPhoneInput} placeholder={placeHolder}/>
+        <input type={"text"} onChange={onChange} className={stl.signPhoneInput} placeholder={placeHolder}/>
     );
 }
 
