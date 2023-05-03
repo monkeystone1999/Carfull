@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {API} from "../../config";
-import RecruitList from "../components/recruit/RecruitList";
+import RecruitList from "../components/recruit-view/RecruitList";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
