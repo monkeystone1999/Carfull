@@ -11,7 +11,16 @@ import SignAgreementTextArea from './SignAgreementTextArea';
 import SignCheckBox from './SignCheckBox';
 
 function SignUpForm(props) {
-    const { idOnChange, pwOnChange, pwCheckOnChange, nickOnChange, genderOnChange, emailOnChange, phoneOnChange, onClick, checkBoxOnChange } = props;
+    const { 
+        idOnChange, 
+        pwOnChange, 
+        pwCheckOnChange, 
+        nickOnChange, 
+        genderOnChange, 
+        emailOnChange,
+        phoneOnChange,
+        onClick,
+        checkBoxOnChange } = props;
 
     return (
 
