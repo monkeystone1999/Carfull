@@ -64,6 +64,7 @@ nav{
 
 .navList {
     align-items: center;
+    display: flex;
 }
 
 .navWrapper ul {
