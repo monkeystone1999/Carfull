@@ -1,6 +1,8 @@
 import React from 'react';
 import stl from '../sign/SignForm.module.css';
-import SignTextLabel from '../sign/SignTextLabel';
+import SignTextInput from '../sign/SignTextInput';
+import SignPasswordInput from '../sign/SignPasswordInput';
+import SignSubmitButton from '../sign/SignSubmitButton';
 
 function LoginForm(props) {
     const {idOnChange, pwOnChange, onClick} = props;
