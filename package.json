@@ -45,6 +45,5 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "url": "^0.11.0"
-  },
-  "proxy": "http://localhost:8080"
+  }
 }

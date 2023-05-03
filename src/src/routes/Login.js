@@ -2,6 +2,7 @@ import {useAuthDispatch, useAuthState} from "../../AuthContext";
 import {redirect, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import LoginForm from "../components/login/LoginForm";
 
 function Login(){
     const formData = new FormData();
@@ -12,6 +13,7 @@ function Login(){
     const [isPW, setPW] = useState("");
     formData.append('userId', isID);
     formData.append('pw', isPW);
+    
     useEffect(()=>{
         if(isLogin){
             return navigate('/');
@@ -19,24 +21,18 @@ function Login(){
     },[isLogin]);
 
     return (
-        <>
-            <input
-                type={"text"}
-                onChange={(event)=>{
-                    setID(event.target.value)
-                }} required
-            />
-            <input
-                type={"text"}
-                onChange={(event)=>{
-                    setPW(event.target.value)
-                }} required
-            />
-            <button type={"submit"} onClick={(event)=>{
-                LoginSubmit(formData, setLogin);
-            }}>로그인!</button>
-        </>
-    )
+        <LoginForm
+            idOnChange = {(event) => {
+                setID(event.target.value);
+            }}
+            pwOnChange = {(event) => {
+                setPW(event.target.value);
+            }}
+            onClick = { 
+                LoginSubmit(formData, setLogin)
+            }
+        />
+    );
 }
 
 function LoginSubmit(formData, setLogin){

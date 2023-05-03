@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {API} from "../../config";
+import RecruitWriteForm from "../components/recruit-write/RecruitWriteForm";
 
 
 function Write(){
@@ -26,39 +27,26 @@ function Write(){
         }
     }, [isWrite])
     return (
-        <>
-            <WriteInput setTitle={setTitle} setFee={setFee} setLimit={setLimit} setStart={setStart}
-                        setEnd={setEnd} setComment={setComment} ></WriteInput>
-            <button type={"submit"} onClick={()=>{WriteSubmit(formData, setWrite)}}></button>
-        </>
+        <RecruitWriteForm
+            titleOnChange={setTitle}
+            feeOnChange={setFee}
+            limitOnChange={setLimit}
+            startPointOnChange={setStart}
+            endPointOnChange={setEnd}
+            commentOnChange={setComment}
+            onClick={() => {
+                WriteSubmit(formData, setWrite)
+            }}
+        />
+
+        // <>
+        //     <WriteInput setTitle={setTitle} setFee={setFee} setLimit={setLimit} setStart={setStart}
+        //                 setEnd={setEnd} setComment={setComment} ></WriteInput>
+        //     <button type={"submit"} onClick={()=>{WriteSubmit(formData, setWrite)}}></button>
+        // </>
     )
-
 }
 
-export {Write}
-function WriteInput({setTitle, setFee,setLimit,setStart,setEnd,setComment}){
-
-    return <>
-        <input type={"text"} name={"boardTitle"} onChange={(event)=>{
-            setTitle(event.target.value);
-        }} placeholder="제목"></input>
-        <input type={"text"} name={"fee"} onChange={(event)=>{
-            setFee(event.target.value);
-        }} placeholder="가격"></input>
-        <input type={"text"} name={"personLimit"} onChange={(event)=>{
-            setLimit(event.target.value);
-        }} placeholder="최대 인원수 제한"></input>
-        <input type={"text"} name={"startPoint"} onChange={(event)=>{
-            setStart(event.target.value);
-        }} placeholder="출발"></input>
-        <input type={"text"} name={"endPoint"} onChange={(event)=>{
-            setEnd(event.target.value);
-        }} placeholder="도착"></input>
-        <textarea name={"comment"} onChange={(event)=>{
-            setComment(event.target.value);
-        }} placeholder="글"></textarea>
-    </>
-}
 const WriteSubmit = (formData, Auth, setResult)=>{
     axios({
         url: `${API.WRITE}`,
@@ -74,3 +62,5 @@ const WriteSubmit = (formData, Auth, setResult)=>{
     }).catch(err => {
     })
 }
+
+export {Write}
