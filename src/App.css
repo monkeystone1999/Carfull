@@ -109,21 +109,6 @@ input[type="search"]:focus{
 .sign_up:hover{
     cursor: pointer;
 }
-.empty{
-    height: 100px;
-}
-nav{
-    width: 100vw;
-    padding: 40px;
-    background-color: white;
-    display: flex;
-    height: 100px;
-    padding: 1px;
-    width: 100vw;
-    justify-content: space-evenly;
-    align-items: center;
-    border-top: 1px;
-}
 .flex{
     display: flex;
     justify-content: space-around;
