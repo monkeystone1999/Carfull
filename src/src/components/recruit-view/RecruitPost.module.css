@@ -9,13 +9,26 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     border: 1px solid grey;
     border-radius: 8px;
     cursor: pointer;
     background: white;
 }
+
+.recruitListItemWrapper:hover {
+    background: lightgrey;
+}
+
+.points ul {
+    list-style: none;
+}
+
+.points ul li {
+    float: left;
+}
+
 
 .recruitListWrapper {
     width: calc(100% -32px);
@@ -30,7 +43,3 @@
     background: white;
     
 }
-.recruitListWrapper:hover {
-    background: lightgrey;
-}
-

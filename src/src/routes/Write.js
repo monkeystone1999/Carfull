@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {API} from "../../config";
+
 import RecruitWriteForm from "../components/recruit-write/RecruitWriteForm";
 
 
@@ -11,6 +12,7 @@ function Write(){
     const [isLimit, setLimit] = useState("");
     const [isStart, setStart] = useState("");
     const [isEnd, setEnd] = useState("");
+    const [isDate, setDate] = useState("");
     const [isComment, setComment] = useState("");
     const formData = new FormData();
     const navigate = useNavigate();
@@ -20,6 +22,7 @@ function Write(){
     formData.append("personLimit", isLimit);
     formData.append("startPoint", isStart);
     formData.append("endPoint", isEnd);
+    formData.append("startTime", isDate);
     formData.append("comment", isComment);
     useEffect(()=>{
         if(isWrite){
@@ -28,12 +31,27 @@ function Write(){
     }, [isWrite])
     return (
         <RecruitWriteForm
-            titleOnChange={setTitle}
-            feeOnChange={setFee}
-            limitOnChange={setLimit}
-            startPointOnChange={setStart}
-            endPointOnChange={setEnd}
-            commentOnChange={setComment}
+            titleOnChange={(event) => {
+                setTitle(event.target.value);
+            }}
+            feeOnChange={(event) => {
+                setFee(event.target.value);
+            }}
+            limitOnChange={(event) => {
+                setLimit(event.target.value);
+            }}
+            startPointOnChange={(event) => {
+                setStart(event.target.value);
+            }}
+            endPointOnChange={(event) => {
+                setEnd(event.target.value);
+            }}
+            commentOnChange={(event) => {
+                setComment(event.target.value);
+            }}
+            dateOnChange={(event) => {
+                setDate(event);
+            }}
             onClick={() => {
                 WriteSubmit(formData, setWrite)
             }}
@@ -47,7 +65,8 @@ function Write(){
     )
 }
 
-const WriteSubmit = (formData, Auth, setResult)=>{
+const WriteSubmit = (formData, setResult)=>{
+    const Auth = localStorage.getItem("access_token");
     axios({
         url: `${API.WRITE}`,
         method: 'post',

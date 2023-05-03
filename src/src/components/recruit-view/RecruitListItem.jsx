@@ -5,9 +5,25 @@ function RecruitListItem(props) {
     const { recruitPost, onClick } = props;
 
     return (
-        <div onClick={onClick} className={stl.recruitListItemWrapper}>
-            <p className={stl.titleText}>{recruitPost.boardTitle}</p>
-        </div>
+        <table onClick={onClick} className={stl.recruitListItemWrapper}>
+            <thead>
+                <th>{recruitPost.boardTitle}</th>
+                <th>{recruitPost.applyPersonCount + `/` + recruitPost.personLimit + `명`}</th>
+            </thead>
+
+            <tbody>
+                <td className={stl.points}>
+                    <ul>
+                        <li>{recruitPost.startPoint}</li>
+                        <li>{`->`}</li>
+                        <li>{recruitPost.endPoint}</li>
+                    </ul>
+                </td>
+                <td>
+                    {recruitPost.startTime}
+                </td>
+            </tbody>
+        </table>
     );
 }
 

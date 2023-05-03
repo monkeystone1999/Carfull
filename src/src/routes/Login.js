@@ -28,9 +28,9 @@ function Login(){
             pwOnChange = {(event) => {
                 setPW(event.target.value);
             }}
-            onClick = { 
+            onClick = {() => {
                 LoginSubmit(formData, setLogin)
-            }
+            }}
         />
     );
 }
