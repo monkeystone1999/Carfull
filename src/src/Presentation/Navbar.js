@@ -1,5 +1,8 @@
 import {useAuthDispatch, useAuthState} from "../../AuthContext";
 import {Link} from "react-router-dom";
+import logo from '../../logo.png';
+
+import stl from './Navbar.module.css';
 
 export function Navbar(){
     const Login = useAuthState();
@@ -11,24 +14,38 @@ export function Navbar(){
     return(
         <>
             <nav className={"empty"}>
-                <div className={"first_nav"}>
-                    {
-                        Login ? <Link onClick={setLogOut} to={"/"} className={"anchor"}>Logout</Link>
-                            : <Link to={"/login"} className={"anchor"}>Login</Link>
-                    }
-                    {
-                        Login ?
-                            <Link to={"/MyInfo"} className={"anchor"}>마이페이지</Link>
-                            : null
-                    }
-                    <Link to={"/sign"} className={"anchor"}>Sign Up</Link>
-                </div>
-                <div className={"main_nav"}>
-                    <Link to={"/"} className={"anchor"}>Logo</Link>
-                    <Link to={"/write"} className={"anchor"}>글쓰기</Link>
-                    <Link to={"/recruit"} className={"anchor"}>
-                        둘러보기
-                    </Link>
+                <div className={stl.navWrapper}>
+                    <ul className={stl.navList}>
+                        <li>
+                            {
+                                Login ? <Link onClick={setLogOut} to={"/"} className={stl.anchor}>Logout</Link>
+                                    : <Link to={"/login"} className={stl.anchor}>Login</Link>
+                            }
+                        </li>
+                        <li>
+                            {
+                                Login ?
+                                <Link to={"/MyInfo"} className={stl.anchor}>마이페이지</Link>
+                                : <Link to={"/sign"} className={stl.anchor}>Sign Up</Link>
+                            }
+                        </li>
+                        <li className={stl.logoWrapper}>
+                              <Link to={"/"} ><img src={logo} alt='' className={stl.logoImg}/></Link>
+                        </li>
+                        <li>
+                            {
+                                Login ?
+                                <Link to={"/write"} className={stl.anchor}>글쓰기</Link>
+                                : null
+                            }
+                             
+                        </li>
+                        <li>
+                            <Link to={"/recruit"} className={stl.anchor}>
+                            둘러보기
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </>
