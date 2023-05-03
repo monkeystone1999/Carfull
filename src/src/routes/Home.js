@@ -1,4 +1,5 @@
 import {useDispatch} from "react-redux";
+import SlideShow from "../components/home/SlideShow";
 
 
 function Home(){
@@ -6,7 +7,7 @@ function Home(){
     
     return(
         <>
-            Home!
+            <SlideShow/>
         </>
     )
 }

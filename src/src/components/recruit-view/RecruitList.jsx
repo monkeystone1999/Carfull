@@ -1,25 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import RecruitListItem from './RecruitListItem';
-
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-
-    & > * {
-        :not(:last-child) {
-            margin-bottom: 16px;
-        }
-    }
-`;
+import stl from './RecruitPost.module.css';
 
 function RecruitList(props) {
     const { recruitPosts, onClickItem } = props;
 
     return (
-        <Wrapper>
+        <div className={stl.recruitListWrapper}>
             {recruitPosts.map((recruitPost, index) => {
                 return (
                     <RecruitListItem
@@ -31,7 +18,7 @@ function RecruitList(props) {
                     />
                 );
             })}
-        </Wrapper>
+        </div>
     );
     
 }
