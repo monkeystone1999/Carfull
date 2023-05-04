@@ -65,6 +65,7 @@ nav{
 .navList {
     align-items: center;
     display: flex;
+    border-bottom: 1px solid green;
 }
 
 .navWrapper ul {

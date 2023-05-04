@@ -1,9 +1,10 @@
 import React from 'react';
-import {InputBox} from "../input";
+import {InputBox} from "../reStyle/input";
 import {SignRadio} from "./signRadio";
 import {SignTextArea} from "./signTextArea";
 import {SignSubmit} from "./signSubmit";
-import st from '../style.module.css'
+import st from "../reStyle/style.module.css";
+
 function SignTotal(props) {
     const {
         idOnChange,

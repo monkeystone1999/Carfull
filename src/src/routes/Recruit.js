@@ -3,7 +3,6 @@ import {API} from "../../config";
 import RecruitList from "../components/recruit-view/RecruitList";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {RecruitTotal} from "../components/reStyle/recruit/recruitTotal";
 
 function Recruit(){
 
@@ -20,8 +19,8 @@ function Recruit(){
       }, []);
 
     return (
-        <RecruitTotal
-            recruitLists={recruitBoard}
+        <RecruitList
+            recruitPosts={recruitBoard}
             onClickItem = {(item) =>{
                 navigate(`/detail/${item.recruitCarfullID}`);
             }}

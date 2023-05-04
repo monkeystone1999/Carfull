@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {API} from "../../config";
-import {WriteTotal} from "../components/reStyle/write/writeTotal";
 
 import RecruitWriteForm from "../components/recruit-write/RecruitWriteForm";
 

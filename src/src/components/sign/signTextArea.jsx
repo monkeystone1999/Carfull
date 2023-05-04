@@ -1,5 +1,5 @@
 import React from 'react';
-import st from '../style.module.css';
+import st from "../reStyle/style.module.css";
 
 function SignTextArea(props) {
     const {description} = props

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import st from "../style.module.css";
+import st from "../reStyle/style.module.css";
 
 
 function SignRadio(props) {

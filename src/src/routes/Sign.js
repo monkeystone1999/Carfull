@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import {SignTotal} from "../components/reStyle/sign/signTotal";
+import {SignTotal} from "../components/sign/signTotal";
 import {API} from "../../config";
 
 function Sign(){

@@ -20,9 +20,10 @@
 
 .signTextLabel {
     padding: 8px;
-    padding-top: 1px;
+    padding-top: 5px;
     padding-bottom: 1px;
     border-color: initial;
+    font-size: 16px;
     display: flex;
     color: rgb(78, 78, 78);
     background-color: transparent;
@@ -164,6 +165,7 @@
     align-items: center;
     text-align: center;
     justify-content: center;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .signSubmitButton {

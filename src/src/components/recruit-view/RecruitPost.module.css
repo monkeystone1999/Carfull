@@ -15,10 +15,12 @@
     border-radius: 8px;
     cursor: pointer;
     background: white;
+    margin-bottom: 20px;
 }
 
 .recruitListItemWrapper:hover {
     background: lightgrey;
+    
 }
 
 .tableHead {
@@ -44,6 +46,10 @@
     text-align: center;
     display: flex;
     justify-content: center;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Myeongjo', serif;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Sunflower', sans-serif;
 }
 
 .points ul {

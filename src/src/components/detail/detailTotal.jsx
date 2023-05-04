@@ -1,6 +1,7 @@
 import React from "react";
-import {useAuthState} from "../../../../AuthContext";
+import {useAuthState} from "../../../AuthContext";
 import {DetailList} from "./detailList";
+import stl from "./detail.module.css";
 
 function DetailTotal(props){
     const isLogin = useAuthState();
@@ -13,12 +14,13 @@ function DetailTotal(props){
                 WriteTime={Detail.recruitWriteTime}
                 nick={Detail.writeMember}
                 personLimit={Detail.personLimit}
+                applyCount={Detail.applyPersonCount}
                 fee={Detail.fee}
                 startTime={Detail.startTime}
                 startPoint={Detail.startPoint}
                 endPoint={Detail.endPoint}
             />
-            {isLogin ? Mine() : null}
+            <div className={stl.Detail_submit}>{isLogin ? Mine() : null}</div>
         </>
     )
 }

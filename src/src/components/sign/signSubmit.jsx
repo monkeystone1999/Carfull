@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import st from "../style.module.css"
-
+import st from "../reStyle/style.module.css";
 
 function SignSubmit(props) {
     const [isAgree, setAgree] = useState(false);

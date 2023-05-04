@@ -3,7 +3,7 @@ import {redirect, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {API} from "../../config";
-import {DetailTotal} from "../components/reStyle/detail/detailTotal";
+import {DetailTotal} from "../components/detail/detailTotal";
 
 function Detail(){
     const isLogin = useAuthState();
@@ -30,6 +30,7 @@ function Detail(){
         if(isMine){
             return (<button onClick={()=>{
                 DetailSubmit(isDetail.recruitCarfullID,false, setResult )
+                
             }}>삭제하기!!</button> )
         }else{
             return (<button onClick={()=>{
@@ -71,6 +72,7 @@ const isMineDetail = (formData, access_token, setMine)=>{
         data : formData
     }).then(res => {
         if(res.data == true){
+            redirect('/');
             setMine(true);
         }
         else{
@@ -91,5 +93,5 @@ const DetailSubmit = (recruitCarfullID, type, setResult)=>{
         headers:{
             Authorization: "Bearer " + access_token,
         }
-    }).then(res=> setResult(true))
+    }).then(res=> redirect('/'))
 }

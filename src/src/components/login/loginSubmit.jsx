@@ -1,5 +1,5 @@
 import React from "react";
-import st from "../style.module.css";
+import st from "../reStyle/style.module.css";
 
 
 function LoginSubmit(props){
