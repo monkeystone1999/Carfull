@@ -87,7 +87,7 @@ const checkIsApplied = (formData, setApplied) => {
             Authorization: "Bearer " + access_token,
         }
     }).then(res => {
-        if(res.data) {
+        if(res.data == true) {
             // 신청했으면 true
             // 신청안했으면 carfullRecruitNotApplied
             setApplied(true);
@@ -109,7 +109,7 @@ const checkIsAccepted = (formData, setAccepted) => {
             Authorization: "Bearer " + access_token,
         }
     }).then(res => {
-        if(res.data) {
+        if(res.data == true) {
             // 승낙했으면 true
             // 승낙안했으면 false
             setAccepted(true);

@@ -11,7 +11,6 @@ function DetailTotal(props){
     const {Detail, isMine, isApplied, isAccepted, API, formData} = props;
     const navigate = useNavigate();
     let submit = init(isMine, isApplied, isAccepted, Detail, API, formData, navigate,isLogin);
-
     return(
         <>
             <DetailList
