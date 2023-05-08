@@ -6,13 +6,25 @@ import {MyInfoWriteTotal} from "../components/myInfo-write/myInfoWriteTotal";
 function MyInfoWrite(props){
     const [isWrite, setWrite] = useState([]);
 
-    // useEffect(()=>{
-    //
-    // },[])
+    useEffect(()=>{
+        BaseMyInfoWrite(setWrite);
+    },[])
 
     return (
         <>
-            <MyInfoWriteTotal/>
+            {
+                isWrite.map((value, index) => {
+                    return (<MyInfoWriteTotal
+                        title={value["boardTitle"]}
+                        fee={value["fee"]}
+                        personLimit={value["personLimit"]}
+                        startPoint={value["startPoint"]}
+                        endPoint={value["endPoint"]}
+                        comment={value["comment"]}
+                    />)
+                })
+            }
+
         </>
     )
 }
@@ -28,6 +40,10 @@ const BaseMyInfoWrite = (setWrite)=>{
             Authorization: "Bearer " + access_token,
         }
     }).then((res)=>{
-        setWrite()
+        setWrite(index =>{
+            return [
+                ...index, res.data
+            ]
+        })
     }).catch(err=>console.log(err));
 }

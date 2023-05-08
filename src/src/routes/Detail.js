@@ -43,6 +43,7 @@ function Detail(){
 
 export {Detail}
 
+// carfullRecruitNotApplied = 내가 신청 안한거임 carfullRecruitApplyNotfound = 신청안했기에 그냥 같이 뜨는거임
 /**처음 들어갈때 기본적인 정보를 요청**/
 const getDetail = (detail, setDetail)=>{
     axios({
