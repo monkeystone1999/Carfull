@@ -1,7 +1,6 @@
 import {useAuthDispatch, useAuthState} from "../../AuthContext";
 import {Link} from "react-router-dom";
 import logo from '../../logo.png';
-
 import stl from './Navbar.module.css';
 
 export function Navbar(){

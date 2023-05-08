@@ -11,5 +11,7 @@ export const API = {
     CHK_RECRU_APL : '/withcar/recruit/isApply',
     CHK_RECRU_ACC : '/withcar/recruit/isAccept',
     INFO : '/withcar/myInfo',
+    INFO_APL : '/withcar/myInfo/apply',
+    INFO_WRT : '/withcar/myInfo/recruit',
     CHANGE_PAWD : '/withcar/myInfo/change-pw',
 }
