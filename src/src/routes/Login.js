@@ -23,7 +23,6 @@ function Login(){
 
     return (
         <>
-
             <LoginTotal
                 idOnChange = {(event) => {
                     setID(event.target.value);

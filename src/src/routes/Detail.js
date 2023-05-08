@@ -10,39 +10,40 @@ function Detail(){
     let {detail} = useParams();
     let [isDetail, setDetail] = useState(Array);
     const [isMine, setMine]= useState(false);
-    const [isResult, setResult] = useState(false);
+    const [isApplied, setApplied] = useState(false);
+    const [isAccepted, setAccepted] = useState(false);
     const formData = new FormData();
+    
     useEffect(()=>{
         const access_token = localStorage.getItem("access_token");
         formData.append('recruit_ID', parseInt(detail));
-        baseDetail(detail, setDetail);
+        
+        getDetail(detail, setDetail);
         if(access_token){
-            isMineDetail(formData, access_token, setMine);
+            checkIsMine(formData, access_token, setMine);
+        }
+
+        if(!isMine) {
+            checkIsApplied(formData, setApplied);
+            checkIsAccepted(formData, setAccepted);
         }
     },[])
+
     useEffect(()=>{
         if(isResult){
             redirect("/");
         }
     },[isResult])
-    const Mine = ()=>{
-        /**내 것이 맞으면 삭제하기가 뜨고 아니면 신청하기가 떠야한다 **/
-        if(isMine){
-            return (<button onClick={()=>{
-                DetailSubmit(isDetail.recruitCarfullID,false, setResult )
-                
-            }}>삭제하기!!</button> )
-        }else{
-            return (<button onClick={()=>{
-                DetailSubmit(isDetail.recruitCarfullID,true, setResult )
-            }}>신청하기!!</button> )
-        }
-    }
+
     return (
         <>
             <DetailTotal
-                Mine = {Mine}
                 Detail = {isDetail}
+                isMine = {isMine}
+                isApplied = {isApplied}
+                isAccepted = {isAccepted}
+                API = {API}
+                formData = {formData}
             />
         </>
     )
@@ -50,9 +51,8 @@ function Detail(){
 
 export {Detail}
 
-
 /**처음 들어갈때 기본적인 정보를 요청**/
-const baseDetail = (detail, setDetail)=>{
+const getDetail = (detail, setDetail)=>{
     axios({
         url: `${API.RECRUIT}/${detail}`,
         method : 'get',
@@ -61,8 +61,8 @@ const baseDetail = (detail, setDetail)=>{
     }).catch(err=>console.log(err));
 }
 
-/** 내가 썻던 글이 맞는가 아닌가 확인하는 위젯 **/
-const isMineDetail = (formData, access_token, setMine)=>{
+/** 내가 썻던 글이 맞는가 아닌가 확인 **/
+const checkIsMine = (formData, access_token, setMine)=>{
     axios({
         url: `${API.RECRU_OWN}`,
         method: 'post',
@@ -81,17 +81,41 @@ const isMineDetail = (formData, access_token, setMine)=>{
     }).catch(err=>console.log(err))
 }
 
-/**제출 버튼**/
-const DetailSubmit = (recruitCarfullID, type, setResult)=>{
+/** 신청한 카풀인지 확인 */
+const checkIsApplied = (formData, setApplied) => {
     const access_token = localStorage.getItem("access_token");
-    let url;
-    /**type 이 true 면 apply 고 false 면 delete 이다  **/
-    type ? url= API.RECRU_APL : url=API.RECRU_DEL;
+    let url = API.CHK_RECRU_APL;
+
     axios({
-        url: `${url}/${recruitCarfullID}`,
+        url: `${url}`,
         method : 'post',
+        data : formData,
         headers:{
             Authorization: "Bearer " + access_token,
         }
-    }).then(res=> redirect('/'))
+    }).then(res => {
+        if(res.data == true) {
+            setApplied(true);
+        }
+    })
+}
+
+/** 승낙된 카풀인지 확인 */ 
+const checkIsAccepted = (formData, setAccepted) => {
+    
+    const access_token = localStorage.getItem("access_token");
+    let url = API.CHK_RECRU_ACC;
+
+    axios({
+        url: `${url}`,
+        method : 'post',
+        data : formData,
+        headers:{
+            Authorization: "Bearer " + access_token,
+        }
+    }).then(res => {
+        if(res.data == true) {
+            setAccepted(true);
+        }
+    })
 }
