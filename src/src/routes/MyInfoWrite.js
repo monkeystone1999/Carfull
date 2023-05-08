@@ -7,22 +7,21 @@ function MyInfoWrite(props) {
     const [isWrite, setWrite] = useState([]);
 
     useEffect(() => {
-        BaseMyInfoWrite(setWrite);
+        BaseMyInfoWrite(setWrite, isWrite);
     }, [])
+
     return (
         <>
             {
-                isWrite.map((value, index) => {
-                    value.map((values)=>{
-                        return (<MyInfoWriteTotal
-                            title={values["boardTitle"]}
-                            fee={values["fee"]}
-                            personLimit={values["personLimit"]}
-                            startPoint={values["startPoint"]}
-                            endPoint={values["endPoint"]}
-                            comment={values["comment"]}
-                        />)
-                    })
+                isWrite.map((value,index)=>{
+                    return (<MyInfoWriteTotal
+                        title={value["boardTitle"]}
+                        fee={value["fee"]}
+                        personLimit={value["personLimit"]}
+                        startPoint={value["startPoint"]}
+                        endPoint={value["endPoint"]}
+                        comment={value["comment"]}
+                    />)
                 })
             }
         </>
@@ -31,7 +30,7 @@ function MyInfoWrite(props) {
 
 export {MyInfoWrite}
 
-const BaseMyInfoWrite = (setWrite) => {
+const BaseMyInfoWrite = (setWrite, isWrite) => {
     const access_token = localStorage.getItem("access_token");
     axios({
         url: `${API.INFO_WRT}`,
@@ -40,10 +39,7 @@ const BaseMyInfoWrite = (setWrite) => {
             Authorization: "Bearer " + access_token,
         }
     }).then((res) => {
-        setWrite(index => {
-            return [
-                ...index, res.data
-            ]
-        })
+        let copy = [...res.data];
+        setWrite(copy);
     }).catch(err => console.log(err));
 }

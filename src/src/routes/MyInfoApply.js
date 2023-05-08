@@ -14,18 +14,16 @@ function MyInfoApply(props){
         <>
             {
                 isApply.map((value, index) => {
-                    value.map(values =>{
                         return (
                             <MyInfoApplyTotal
-                                title={values["boardTitle"]}
-                                fee={values["fee"]}
-                                personLimit={values["personLimit"]}
-                                startPoint={values["startPoint"]}
-                                endPoint={values["endPoint"]}
-                                comment={values["comment"]}
+                                title={value["boardTitle"]}
+                                fee={value["fee"]}
+                                personLimit={value["personLimit"]}
+                                startPoint={value["startPoint"]}
+                                endPoint={value["endPoint"]}
+                                comment={value["comment"]}
                             />
                         )
-                    })
 
                 })
             }
@@ -40,16 +38,13 @@ export {MyInfoApply}
 const BaseMyInfoApply = (setApply)=>{
     const access_token = localStorage.getItem("access_token");
     axios({
-        url:`${API.INFO_WRT}`,
+        url:`${API.INFO_APL}`,
         method:'get',
         headers: {
             Authorization: "Bearer " + access_token,
         }
     }).then((res)=>{
-        setApply(index =>{
-            return [
-                ...index, res.data
-            ]
-        })
+        let copy = [...res.data];
+        setApply(copy);
     }).catch(err=>console.log(err));
 }
