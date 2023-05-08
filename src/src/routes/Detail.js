@@ -17,12 +17,10 @@ function Detail(){
     useEffect(()=>{
         const access_token = localStorage.getItem("access_token");
         formData.append('recruit_ID', parseInt(detail));
-        
-        getDetail(detail, setDetail);
+        getDetail(parseInt(detail), setDetail);
         if(access_token){
             checkIsMine(formData, access_token, setMine);
         }
-
         if(!isMine) {
             checkIsApplied(formData, setApplied);
             checkIsAccepted(formData, setAccepted);
