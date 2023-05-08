@@ -8,8 +8,8 @@ export const API = {
     RECRU_APL : '/withcar/recruit/apply',
     RECRU_CAN : '/withcar/recruit/cancel',
     RECRU_OWN : '/withcar/recruit/isowner',
-    CHK_RECRU_APL : 'withcar/recruit/isApply',
-    CHK_RECRU_ACC : 'withcar/recruit/isAccept',
+    CHK_RECRU_APL : '/withcar/recruit/isApply',
+    CHK_RECRU_ACC : '/withcar/recruit/isAccept',
     INFO : '/withcar/myInfo',
     CHANGE_PAWD : '/withcar/myInfo/change-pw',
 }

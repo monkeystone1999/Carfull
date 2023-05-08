@@ -4,11 +4,13 @@ import DetailSubmitButton from "./detailSubmitButton";
 import stl from "./detail.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {useAuthState} from "../../../AuthContext";
 
 function DetailTotal(props){
+    const isLogin = useAuthState();
     const {Detail, isMine, isApplied, isAccepted, API, formData} = props;
     const navigate = useNavigate();
-    let submit = init(isMine, isApplied, isAccepted, Detail, API, formData, navigate);
+    let submit = init(isMine, isApplied, isAccepted, Detail, API, formData, navigate,isLogin);
 
     return(
         <>
@@ -31,9 +33,13 @@ function DetailTotal(props){
     )
 }
 
-function init(isMine, isApplied, isAccepted, Detail, API, formData, navigate) {
+function init(isMine, isApplied, isAccepted, Detail, API, formData, navigate, isLogin) {
     let submit;
-    
+    if(!isLogin){
+        submit = null
+        return submit;
+    }
+
     if(isMine) {
         // 내가 쓴 글이므로 삭제 버튼을 띄움
         submit = 
