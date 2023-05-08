@@ -29,12 +29,6 @@ function Detail(){
         }
     },[])
 
-    useEffect(()=>{
-        if(isResult){
-            redirect("/");
-        }
-    },[isResult])
-
     return (
         <>
             <DetailTotal

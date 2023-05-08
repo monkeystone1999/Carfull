@@ -1,14 +1,14 @@
 import React from "react";
-import {useAuthState} from "../../../AuthContext";
 import {DetailList} from "./detailList";
 import DetailSubmitButton from "./detailSubmitButton";
 import stl from "./detail.module.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function DetailTotal(props){
     const {Detail, isMine, isApplied, isAccepted, API, formData} = props;
-
-    let submit = init(isMine, isApplied, isAccepted, Detail, API, formData);
+    const navigate = useNavigate();
+    let submit = init(isMine, isApplied, isAccepted, Detail, API, formData, navigate);
 
     return(
         <>
@@ -31,7 +31,7 @@ function DetailTotal(props){
     )
 }
 
-function init(isMine, isApplied, isAccepted, Detail, API, formData) {
+function init(isMine, isApplied, isAccepted, Detail, API, formData, navigate) {
     let submit;
     
     if(isMine) {
@@ -42,7 +42,7 @@ function init(isMine, isApplied, isAccepted, Detail, API, formData) {
                 buttonText={`삭제`}
                 textCSS={stl.acceptedText}
                 onClick={() => {
-                    recruitDelete(API, formData)
+                    recruitDelete(API, formData, navigate)
                 }} />;
         return submit;
     }
@@ -56,7 +56,7 @@ function init(isMine, isApplied, isAccepted, Detail, API, formData) {
                     buttonText={`취소`}
                     textCSS={stl.acceptedText}
                     onClick={() => {
-                        recruitCancel(API, formData)
+                        recruitCancel(API, formData, navigate)
                     }}  />;
         } else {
             // 신청은 했지만 승낙이 안된 상태
@@ -66,7 +66,7 @@ function init(isMine, isApplied, isAccepted, Detail, API, formData) {
                     buttonText={`취소`}
                     textCSS={stl.appliedText}
                     onClick={() => {
-                        recruitCancel(API, formData)
+                        recruitCancel(API, formData, navigate)
                     }}  />;
         }
     } else {
@@ -86,14 +86,14 @@ function init(isMine, isApplied, isAccepted, Detail, API, formData) {
                     buttonText={`신청`}
                     textCSS={stl.submitText}
                     onClick = {() => {
-                        recruitApply(API, formData)
+                        recruitApply(API, formData, navigate)
                     }}  />;
         }
     }
     return submit;
 }
 
-function recruitApply(API, formData) {
+function recruitApply(API, formData, navigate) {
     const access_token = localStorage.getItem("access_token");
 
     axios({
@@ -105,14 +105,14 @@ function recruitApply(API, formData) {
         }
     }).then(res => {
         if(res.data) {
-            useNavigate(`/detail/${formData.recruit_ID}`)
+            navigate(`/detail/${formData.recruit_ID}`)
         } else {
             alert(`error : ${res}`);
         }
     })
 }
 
-function recruitDelete(API, formData) {
+function recruitDelete(API, formData, navigate) {
     const access_token = localStorage.getItem("access_token");
 
     axios({
@@ -124,14 +124,14 @@ function recruitDelete(API, formData) {
         }
     }).then(res => {
         if(res.data) {
-            useNavigate(`/detail/${formData.recruit_ID}`)
+            navigate(`/detail/${formData.recruit_ID}`)
         } else {
             alert(`error : ${res}`);
         }
     })
 }
 
-function recruitCancel(API, formData) {
+function recruitCancel(API, formData, navigate) {
     const access_token = localStorage.getItem("access_token");
 
     axios({
@@ -143,11 +143,11 @@ function recruitCancel(API, formData) {
         }
     }).then(res => {
         if(res.data) {
-            useNavigate(`/detail/${formData.recruit_ID}`)
+            navigate(`/detail/${formData.recruit_ID}`)
         } else {
             alert(`error : ${res}`);
         }
     })
 }
 
-export default {DetailTotal}
+export {DetailTotal};
