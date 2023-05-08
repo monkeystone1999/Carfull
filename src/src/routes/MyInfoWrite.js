@@ -3,47 +3,47 @@ import axios from "axios";
 import {API} from "../../config";
 import {MyInfoWriteTotal} from "../components/myInfo-write/myInfoWriteTotal";
 
-function MyInfoWrite(props){
+function MyInfoWrite(props) {
     const [isWrite, setWrite] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         BaseMyInfoWrite(setWrite);
-    },[])
-
+    }, [])
     return (
         <>
             {
                 isWrite.map((value, index) => {
-                    return (<MyInfoWriteTotal
-                        title={value["boardTitle"]}
-                        fee={value["fee"]}
-                        personLimit={value["personLimit"]}
-                        startPoint={value["startPoint"]}
-                        endPoint={value["endPoint"]}
-                        comment={value["comment"]}
-                    />)
+                    value.map((values)=>{
+                        return (<MyInfoWriteTotal
+                            title={values["boardTitle"]}
+                            fee={values["fee"]}
+                            personLimit={values["personLimit"]}
+                            startPoint={values["startPoint"]}
+                            endPoint={values["endPoint"]}
+                            comment={values["comment"]}
+                        />)
+                    })
                 })
             }
-
         </>
     )
 }
 
 export {MyInfoWrite}
 
-const BaseMyInfoWrite = (setWrite)=>{
+const BaseMyInfoWrite = (setWrite) => {
     const access_token = localStorage.getItem("access_token");
     axios({
-        url:`${API.INFO_WRT}`,
-        method:'get',
+        url: `${API.INFO_WRT}`,
+        method: 'get',
         headers: {
             Authorization: "Bearer " + access_token,
         }
-    }).then((res)=>{
-        setWrite(index =>{
+    }).then((res) => {
+        setWrite(index => {
             return [
                 ...index, res.data
             ]
         })
-    }).catch(err=>console.log(err));
+    }).catch(err => console.log(err));
 }

@@ -13,11 +13,12 @@ function Detail(){
     const [isApplied, setApplied] = useState(false);
     const [isAccepted, setAccepted] = useState(false);
     const formData = new FormData();
-    
+    formData.append('recruit_ID', parseInt(detail));
+    const access_token = localStorage.getItem("access_token");
+
+
     useEffect(()=>{
-        const access_token = localStorage.getItem("access_token");
-        formData.append('recruit_ID', parseInt(detail));
-        getDetail(parseInt(detail), setDetail);
+    getDetail(parseInt(detail), setDetail);
         if(access_token){
             checkIsMine(formData, access_token, setMine);
         }

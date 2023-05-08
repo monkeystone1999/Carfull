@@ -14,16 +14,19 @@ function MyInfoApply(props){
         <>
             {
                 isApply.map((value, index) => {
-                    return (
-                        <MyInfoApplyTotal
-                            title={value["boardTitle"]}
-                            fee={value["fee"]}
-                            personLimit={value["personLimit"]}
-                            startPoint={value["startPoint"]}
-                            endPoint={value["endPoint"]}
-                            comment={value["comment"]}
-                        />
-                    )
+                    value.map(values =>{
+                        return (
+                            <MyInfoApplyTotal
+                                title={values["boardTitle"]}
+                                fee={values["fee"]}
+                                personLimit={values["personLimit"]}
+                                startPoint={values["startPoint"]}
+                                endPoint={values["endPoint"]}
+                                comment={values["comment"]}
+                            />
+                        )
+                    })
+
                 })
             }
 
