@@ -6,20 +6,19 @@ import StompJs from "stompjs";
 
 function MyChat(props) {
     const formData = new FormData();
-    const [msg, setMsg] = useState();
+    const [msg, setMsg] = useState([]);
     const [myMsg, setMyMsg] = useState("");
-    let sock;
-    let stomp;
-
+    const [stomp, setStomp] = useState(()=>()=>{});
+    // let stomp;
     useEffect(() => {
-        sock = new SockJs(`${API.CHAT}`);
-        stomp = StompJs.over(sock);
-        stompConnect();
+        let sock = new SockJs(`${API.CHAT}`);
+        setStomp(()=>()=>StompJs.over(sock))
+        stompConnect(stomp);
         return ()=>{
-            DisConnect();
+            DisConnect(stomp);
         }
     }, [])
-    const DisConnect = () => {
+    const DisConnect = (stomp) => {
         try {
             stomp.debug = null;
             stomp.disconnect(() => {
@@ -34,7 +33,7 @@ function MyChat(props) {
         }
         stomp.send(`${API.CHAT_SEND}`, {}, JSON.stringify(data));
     };
-    const stompConnect = () => {
+    const stompConnect = (stomp) => {
         try {
             stomp.debug = null;
             //웹소켓 연결시 stomp에서 자동으로 connect이 되었다는것을
@@ -43,7 +42,8 @@ function MyChat(props) {
                 stomp.subscribe(
                     `${API.GREET}`,
                     (data) => {
-                        setMsg(JSON.parse(data.body))
+                        let copy = JSON.parse(data.body)
+                        setMsg(copy)
                         //데이터 파싱
                     },
                     {}
