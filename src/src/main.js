@@ -16,6 +16,7 @@ import {Home} from "./routes/Home";
 import {MyInfoChangePW} from "./routes/MyInfoChangePW";
 import {MyInfoApply} from "./routes/MyInfoApply";
 import {MyInfoWrite} from "./routes/MyInfoWrite";
+import {MyChat} from "./routes/MyChat";
 
 
 
@@ -35,6 +36,7 @@ function Main(){
                 <Route path={"/MyInfo/change_pw"} element={<MyInfoChangePW></MyInfoChangePW>}></Route>
                 <Route path={"/MyInfo/apply"} element={<MyInfoApply/>}/>
                 <Route path={"/MyInfo/recruit"} element={<MyInfoWrite/>}/>
+                <Route path={"/MyChat"} element={<MyChat/>}/>
                 {/*restart*/}
             </Routes>
         </>
