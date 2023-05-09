@@ -18,21 +18,20 @@ function MyChat(props) {
             onConnect: () => {
                 console.log('onConnect');
                 
-                client.subscribe('/withcar/topic/greetings', message => {
+                client.subscribe('/topic/greetings', message => {
                     console.log(message);
-                    setGreetings(message.body);
+                    setGreetings([...greetings ,message.body]);
                 });
             },
-            // debug: (str) => {console.log(new Date, str);}
+            debug: (str) => {console.log(str);}
         });
-        setConnected(true);
+        
         return client;
-    }, [])
-
-    stompClient.activate();
+    }, []);
     
     const clickHandler = () => {
-        stompClient.publish({destination: '/withcar/app/hello', body: name});
+        stompClient.publish({destination: '/app/hello', 
+        body: JSON.stringify({ name })});
     }
 
     // useEffect(() => {
@@ -49,19 +48,23 @@ function MyChat(props) {
     //     }
     // }, [stompClient]);
 
-    // const connect = () => {
-    //     const socket = new SockJs(`${API.CHAT}`);
-    //     const client = StompJs.over(socket);
-    //     setStompClient(client);
-    // };
+    const connect = () => {
+        // const socket = new SockJs(`${API.CHAT}`);
+        // const client = StompJs.over(socket);
+        // setStompClient(client);
+        stompClient.activate();
+        setConnected(true);
+        
+        console.log("Connected");
+    };
 
-    // const disconnect = () => {
-    //     if (stompClient !== null) {
-    //         stompClient.disconnect();
-    //     }
-    //     setConnected(false);
-    //     console.log("Disconnected");
-    // };
+    const disconnect = () => {
+        if (stompClient !== null) {
+            stompClient.disconnect();
+        }
+        setConnected(false);
+        console.log("Disconnected");
+    };
 
     // const sendName = () => {
     //     stompClient.send(`${API.CHAT_SEND}`, {}, JSON.stringify({ name }));
@@ -82,6 +85,7 @@ function MyChat(props) {
                                 id="connect"
                                 className="btn btn-default"
                                 type="button"
+                                onClick={connect}
                             >
                                 Connect
                             </button>
@@ -89,6 +93,7 @@ function MyChat(props) {
                                 id="disconnect"
                                 className="btn btn-default"
                                 type="button"
+                                onClick={disconnect}
                             >
                                 Disconnect
                             </button>
