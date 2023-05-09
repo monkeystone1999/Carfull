@@ -5,16 +5,17 @@ import {Client} from "@stomp/stompjs";
 
 
 function MyChat(props) {
-    const [stompClient, setStompClient] = useState(null);
+    const [stompClient, setStompClient] = useState(new Client());
     const [connected, setConnected] = useState(false);
     const [name, setName] = useState("");
     const [greetings, setGreetings] = useState([]);
 
     useEffect(() => {
-        setStompClient(new Client());
+        // setStompClient(new Client());
 
         stompClient.configure({
-            brokerURL : 'ws://localhost:8080/withcar/gs-guide-websocket',
+            brokerURL : 'ws://anu330.iptime.org:8080/withcar/gs-guide-websocket',
+            // brokerURL: `${API.CHAT}`,
             onConnect: () => {
                 console.log('onConnect');
                 
