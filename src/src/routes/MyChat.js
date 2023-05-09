@@ -1,34 +1,36 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {API} from "../../config";
-import SockJs from "sockjs-client";
 import {Client} from "@stomp/stompjs";
 
 
 function MyChat(props) {
-    const [stompClient, setStompClient] = useState(new Client());
+    // const [stompClient, setStompClient] = useState(null);
     const [connected, setConnected] = useState(false);
     const [name, setName] = useState("");
     const [greetings, setGreetings] = useState([]);
 
-    useEffect(() => {
-        // setStompClient(new Client());
+    const stompClient = useMemo(() => {
+        let client = new Client();
 
-        stompClient.configure({
+        client.configure({
             brokerURL : 'ws://anu330.iptime.org:8080/withcar/gs-guide-websocket',
             // brokerURL: `${API.CHAT}`,
             onConnect: () => {
                 console.log('onConnect');
                 
-                stompClient.subscribe('/withcar/topic/greetings', message => {
+                client.subscribe('/withcar/topic/greetings', message => {
                     console.log(message);
                     setGreetings(message.body);
                 });
             },
-            debug: (str) => {console.log(new Date, str);}
+            // debug: (str) => {console.log(new Date, str);}
         });
-        stompClient.activate();
+        setConnected(true);
+        return client;
     }, [])
 
+    stompClient.activate();
+    
     const clickHandler = () => {
         stompClient.publish({destination: '/withcar/app/hello', body: name});
     }
