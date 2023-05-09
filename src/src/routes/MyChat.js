@@ -23,7 +23,6 @@ function MyChat(props) {
             });
         }
     }, [stompClient]);
-
     const connect = () => {
         const socket = new SockJs(`${API.CHAT}`);
         const client = StompJs.over(socket);
