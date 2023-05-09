@@ -5,64 +5,118 @@ import StompJs from "stompjs";
 
 
 function MyChat(props) {
-    const formData = new FormData();
-    const [msg, setMsg] = useState();
-    const [myMsg, setMyMsg] = useState("");
-    let sock;
-    let stomp;
+    const [stompClient, setStompClient] = useState(null);
+    const [connected, setConnected] = useState(false);
+    const [name, setName] = useState("");
+    const [greetings, setGreetings] = useState([]);
 
     useEffect(() => {
-        sock = new SockJs(`${API.CHAT}`);
-        stomp = StompJs.over(sock);
-        stompConnect();
-        return ()=>{
-            DisConnect();
-        }
-    }, [])
-    const DisConnect = () => {
-        try {
-            stomp.debug = null;
-            stomp.disconnect(() => {
-                stomp.unsubscribe("sub-0");
+        if (stompClient !== null) {
+            stompClient.connect({}, (frame) => {
+                setConnected(true);
+                console.log("Connected: " + frame);
+                stompClient.subscribe("/topic/greetings", (greeting) => {
+                    const message = JSON.parse(greeting.body).content;
+                    setGreetings((prevGreetings) => [...prevGreetings, message]);
+                });
             });
-        } catch (err) {
         }
+    }, [stompClient]);
+
+    const connect = () => {
+        const socket = new SockJs("/gs-guide-websocket");
+        const client = StompJs.over(socket);
+        setStompClient(client);
     };
-    const SendMessage = (myMsg) => {
-        const data = {
-            'name' : myMsg
+
+    const disconnect = () => {
+        if (stompClient !== null) {
+            stompClient.disconnect();
         }
-        stomp.send(`${API.CHAT_SEND}`, {}, JSON.stringify(data));
+        setConnected(false);
+        console.log("Disconnected");
     };
-    const stompConnect = () => {
-        try {
-            stomp.debug = null;
-            //웹소켓 연결시 stomp에서 자동으로 connect이 되었다는것을
-            //console에 보여주는데 그것을 감추기 위한 debug
-            stomp.connect({}, () => {
-                stomp.subscribe(
-                    `${API.GREET}`,
-                    (data) => {
-                        setMsg(JSON.parse(data.body))
-                        //데이터 파싱
-                    },
-                    {}
-                );
-            });
-        } catch (err){}
+
+    const sendName = () => {
+        stompClient.send("/app/hello", {}, JSON.stringify({ name }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
     };
 
     return (
-        <>
-            {msg}
-            {myMsg}
-            <input type={"text"} onChange={(event)=>{
-                setMyMsg(event.target.value)
-            }}></input>
-            <button onClick={()=>{
-                SendMessage(myMsg)
-            }}>제출!</button>
-        </>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-6">
+                    <form className="form-inline" onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="connect">WebSocket connection:</label>
+                            <button
+                                id="connect"
+                                className="btn btn-default"
+                                type="button"
+                                onClick={connect}
+                                disabled={connected}
+                            >
+                                Connect
+                            </button>
+                            <button
+                                id="disconnect"
+                                className="btn btn-default"
+                                type="button"
+                                onClick={disconnect}
+                                disabled={!connected}
+                            >
+                                Disconnect
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div className="col-md-6">
+                    <form className="form-inline" onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="name">What is your name?</label>
+                            <input
+                                type="text"
+                                id="name"
+                                className="form-control"
+                                placeholder="Your name here..."
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <button
+                            id="send"
+                            className="btn btn-default"
+                            type="button"
+                            onClick={sendName}
+                            disabled={!connected}
+                        >
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-12">
+                    <table className="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Greetings</th>
+                        </tr>
+                        </thead>
+                        <tbody id="greetings">
+                        {greetings.map((message, index) => (
+                            <tr key={index}>
+                                <td>{message}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     )
 }
 
