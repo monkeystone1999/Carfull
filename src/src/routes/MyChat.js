@@ -15,7 +15,8 @@ function MyChat(props) {
             stompClient.connect({}, (frame) => {
                 setConnected(true);
                 console.log("Connected: " + frame);
-                stompClient.subscribe("/topic/greetings", (greeting) => {
+                stompClient.subscribe(`${API.GREET}`, (greeting) => {
+                    console.log(greeting);
                     const message = JSON.parse(greeting.body).content;
                     setGreetings((prevGreetings) => [...prevGreetings, message]);
                 });
@@ -24,7 +25,7 @@ function MyChat(props) {
     }, [stompClient]);
 
     const connect = () => {
-        const socket = new SockJs("/gs-guide-websocket");
+        const socket = new SockJs(`${API.CHAT}`);
         const client = StompJs.over(socket);
         setStompClient(client);
     };
@@ -38,7 +39,7 @@ function MyChat(props) {
     };
 
     const sendName = () => {
-        stompClient.send("/app/hello", {}, JSON.stringify({ name }));
+        stompClient.send(`${API.CHAT_SEND}`, {}, JSON.stringify({ name }));
     };
 
     const handleSubmit = (e) => {
