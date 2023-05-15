@@ -1,13 +1,15 @@
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
 import {API} from "../../config";
 import {Client} from "@stomp/stompjs";
 
 
 function MyChat(props) {
     // const [stompClient, setStompClient] = useState(null);
+    const { recruitPostID, title } = props;
     const [connected, setConnected] = useState(false);
-    const [name, setName] = useState("");
+    const [message, setMessage] = useState("");
     const [greetings, setGreetings] = useState([]);
+    const [receivedMsg, setReceivedMsg] = useState("");
 
     const stompClient = useMemo(() => {
         let client = new Client();
@@ -18,9 +20,9 @@ function MyChat(props) {
             onConnect: () => {
                 console.log('onConnect');
                 
-                client.subscribe('/topic/greetings', message => {
+                client.subscribe(`/topic/recruit/`+recruitPostID, (message) => {
                     console.log(message);
-                    setGreetings([...greetings ,message.body]);
+                    setReceivedMsg(message.body);
                 });
             },
             debug: (str) => {console.log(str);}
@@ -28,10 +30,18 @@ function MyChat(props) {
         
         return client;
     }, []);
+
+    useEffect(() => {
+        if(receivedMsg != "") { 
+            setGreetings([...greetings, JSON.parse(receivedMsg)]);
+        }
+    }, [receivedMsg]);
+    
     
     const clickHandler = () => {
-        stompClient.publish({destination: '/app/hello', 
-        body: JSON.stringify({ name })});
+        let token = localStorage.getItem("access_token")
+        stompClient.publish({destination: `/app/recruit/`+recruitPostID, 
+        body: JSON.stringify({ message, token })});
     }
 
     // useEffect(() => {
@@ -103,14 +113,14 @@ function MyChat(props) {
                 <div className="col-md-6">
                     <form className="form-inline" onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="name">What is your name?</label>
+                            <label htmlFor="name">{title}의 채팅</label>
                             <input
                                 type="text"
-                                id="name"
+                                id="message"
                                 className="form-control"
-                                placeholder="Your name here..."
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                placeholder="내용을 입력하세요"
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
                             />
                         </div>
                         <button
@@ -136,7 +146,7 @@ function MyChat(props) {
                         <tbody id="greetings">
                         {greetings.map((message, index) => (
                             <tr key={index}>
-                                <td>{message}</td>
+                                <td>{message.nick} : {message.content}</td>
                             </tr>
                         ))}
                         </tbody>

@@ -16,6 +16,7 @@ function MyInfoApply(props){
                 isApply.map((value, index) => {
                         return (
                             <MyInfoApplyTotal
+                                recruitPostID={value["recruitCarfullID"]}
                                 title={value["boardTitle"]}
                                 fee={value["fee"]}
                                 personLimit={value["personLimit"]}

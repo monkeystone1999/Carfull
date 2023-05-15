@@ -1,7 +1,8 @@
 import React from 'react';
+import { MyChat } from '../../routes/MyChat';
 
 function MyInfoApplyTotal(props){
-    const {title, fee, personLimit, startPoint, endPoint, comment} = props
+    const {recruitPostID ,title, fee, personLimit, startPoint, endPoint, comment} = props
     return (
         <>
             <div><br/></div>
@@ -12,6 +13,12 @@ function MyInfoApplyTotal(props){
             <div>{endPoint}</div>
             <div>{comment}</div>
             <br/>
+            
+            {/* <Link to={"/MyChat"}>채팅하기</Link> */}
+            <MyChat
+                recruitPostID = {recruitPostID}
+                title = {title}
+            />
         </>
     )
 }

@@ -27,7 +27,7 @@ function MyInfo(){
                 nick={Myinfo.nick}
                 userId={Myinfo.userId}
             />
-            <Link to={"/MyChat"}>채팅하기</Link>
+            {/* <Link to={"/MyChat"}>채팅하기</Link> */}
         </>
     )
 }
