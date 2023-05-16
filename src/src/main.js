@@ -29,14 +29,14 @@ function Main() {
                 <Route path={"/sign"} element={<Sign></Sign>}></Route>
                 <Route path={"/recruit"} element={<Recruit></Recruit>}></Route>
                 <Route path={"/detail/:detail"} element={<Detail></Detail>}></Route>
-                <IsLogin>
+                <Route element={<IsLogin/>}>
                     <Route path={"/write"} element={<Write></Write>}></Route>
                     <Route path={"/MyInfo"} element={<MyInfo></MyInfo>}></Route>
                     <Route path={"/MyInfo/change_pw"} element={<MyInfoChangePW></MyInfoChangePW>}></Route>
                     <Route path={"/MyInfo/apply"} element={<MyInfoApply/>}/>
                     <Route path={"/MyInfo/recruit"} element={<MyInfoWrite/>}/>
                     <Route path={"/MyChat"} element={<MyChat/>}/>
-                </IsLogin>
+                </Route>
                 {/*restart*/}
             </Routes>
         </>
