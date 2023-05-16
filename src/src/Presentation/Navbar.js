@@ -14,7 +14,7 @@ export function Navbar() {
         <>
             <div className={stl.topNav}>
                 <div>
-                    QR코드로 저장하기!
+                    URL List : carfull , etc...
                 </div>
             </div>
             <nav className={stl.empty}>
@@ -28,7 +28,7 @@ export function Navbar() {
                         </li>
 
                         <Link to={"/sign"} className={stl.anchor}>Sign Up</Link>
-                        <li className={stl.logoWrapper}>
+                        <li class기Name={stl.logoWrapper}>
                             <Link to={"/"}><img src={logo} alt='' className={stl.logoImg}/></Link>
                         </li>
                         <li>
