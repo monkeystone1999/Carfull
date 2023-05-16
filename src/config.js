@@ -27,46 +27,6 @@ export const API = {
 
 
 
-//const [stompClient, setStompClient] = useState(null);
-//   const [connected, setConnected] = useState(false);
-//   const [name, setName] = useState("");
-//   const [greetings, setGreetings] = useState([]);
-//
-//   useEffect(() => {
-//     if (stompClient !== null) {
-//       stompClient.connect({}, (frame) => {
-//         setConnected(true);
-//         console.log("Connected: " + frame);
-//         stompClient.subscribe("/topic/greetings", (greeting) => {
-//           const message = JSON.parse(greeting.body).content;
-//           setGreetings((prevGreetings) => [...prevGreetings, message]);
-//         });
-//       });
-//     }
-//   }, [stompClient]);
-//
-//   const connect = () => {
-//     const socket = new SockJS("/gs-guide-websocket");
-//     const client = Stomp.over(socket);
-//     setStompClient(client);
-//   };
-//
-//   const disconnect = () => {
-//     if (stompClient !== null) {
-//       stompClient.disconnect();
-//     }
-//     setConnected(false);
-//     console.log("Disconnected");
-//   };
-//
-//   const sendName = () => {
-//     stompClient.send("/app/hello", {}, JSON.stringify({ name }));
-//   };
-//
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//   };
-
 
 
 
