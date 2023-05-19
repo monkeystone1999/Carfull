@@ -4,13 +4,21 @@ import { useAuthState} from "../AuthContext";
 import {Navigate, Outlet, redirect} from "react-router-dom";
 
 
-function IsLogin({children}){
+function IsLogin(){
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const isLogin = useAuthState();
+    const msg = ()=>{
+        alert("로그인 후 이용해주세요");
+        return (
+            <Navigate to={'/'}/>
+        )
+    }
     return (
         <>{
-            isLogin == true ? <Outlet/>: <Navigate to={'/'}/>
+            isLogin == true ?
+                <Outlet/>
+                : (msg())
         }
         </>
     )

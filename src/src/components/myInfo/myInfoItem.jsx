@@ -7,9 +7,9 @@ function MyInfoItem(props){
     return(
         <>
             <div className={st.MyInfo}>
-                <div className={st.Email}>{email}</div>
-                <div className={st.userId}>{userId}</div>
-                <div className={st.nick}>{nick} : 닉 변경하기</div>
+                <div className={st.Email}>Email : {email}</div>
+                <div className={st.userId}>아이디 : {userId}</div>
+                <div className={st.nick}>닉네임 : {nick}</div>
             </div>
         </>
     )

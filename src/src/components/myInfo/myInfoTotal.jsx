@@ -22,11 +22,12 @@ function MyInfoTotal(props) {
                     nick={nick}
                     userId={userId}
                 />
+
                 <div className={st.Write}>
-                    <Link to={`/MyInfo/recruit`}>write</Link>
+                    <Link to={`/MyInfo/recruit`}>작성 내역 </Link>
                 </div>
                 <div className={st.Apply}>
-                    <Link to={`/MyInfo/apply`}>apply</Link>
+                    <Link to={`/MyInfo/apply`}>신청 내역</Link>
                 </div>
                 <div className={st.ChangePW}>
                     <Link to={"/MyInfo/change_pw"}>비밀번호 변경하기</Link>

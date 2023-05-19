@@ -6,12 +6,12 @@ function MyInfoApplyTotal(props){
     return (
         <>
             <div><br/></div>
-            <div>{title}</div>
-            <div>{fee}</div>
-            <div>{personLimit}</div>
-            <div>{startPoint}</div>
-            <div>{endPoint}</div>
-            <div>{comment}</div>
+            <div>제목 : {title}</div>
+            <div>가격 : {fee}</div>
+            <div>인원 수 제한 : {personLimit}</div>
+            <div>출발지 : {startPoint}</div>
+            <div>도착지 : {endPoint}</div>
+            <div>내용 : {comment}</div>
             <br/>
             
             {/* <Link to={"/MyChat"}>채팅하기</Link> */}

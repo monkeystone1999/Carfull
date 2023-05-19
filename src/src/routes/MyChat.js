@@ -10,6 +10,15 @@ function MyChat(props) {
     const [message, setMessage] = useState("");
     const [greetings, setGreetings] = useState([]);
     const [receivedMsg, setReceivedMsg] = useState("");
+    // const connect = () => {
+    //     // const socket = new SockJs(`${API.CHAT}`);
+    //     // const client = StompJs.over(socket);
+    //     // setStompClient(client);
+    //     stompClient.activate();
+    //     setConnected(true);
+    //
+    //     console.log("Connected");
+    // };
 
     const stompClient = useMemo(() => {
         let client = new Client();
@@ -27,8 +36,7 @@ function MyChat(props) {
             },
             debug: (str) => {console.log(str);}
         });
-        
-        return client;
+                return client;
     }, []);
 
     useEffect(() => {
@@ -36,7 +44,12 @@ function MyChat(props) {
             setGreetings([...greetings, JSON.parse(receivedMsg)]);
         }
     }, [receivedMsg]);
-    
+    useEffect(()=>{
+        setTimeout(()=>{
+            stompClient.activate();
+            setConnected(true);
+        },100)
+    },[])
     
     const clickHandler = () => {
         let token = localStorage.getItem("access_token")
@@ -58,15 +71,6 @@ function MyChat(props) {
     //     }
     // }, [stompClient]);
 
-    const connect = () => {
-        // const socket = new SockJs(`${API.CHAT}`);
-        // const client = StompJs.over(socket);
-        // setStompClient(client);
-        stompClient.activate();
-        setConnected(true);
-        
-        console.log("Connected");
-    };
 
     const disconnect = () => {
         if (stompClient !== null) {
@@ -90,23 +94,25 @@ function MyChat(props) {
                 <div className="col-md-6">
                     <form className="form-inline" onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="connect">WebSocket connection:</label>
-                            <button
-                                id="connect"
-                                className="btn btn-default"
-                                type="button"
-                                onClick={connect}
-                            >
-                                Connect
-                            </button>
-                            <button
-                                id="disconnect"
-                                className="btn btn-default"
-                                type="button"
-                                onClick={disconnect}
-                            >
-                                Disconnect
-                            </button>
+                            <label htmlFor="connect">WebSocket connection: {connected ?
+                                <span>접속 되었습니다!</span>
+                            :<span>접속 중입니다</span>}</label>
+                            {/*<button*/}
+                            {/*    id="connect"*/}
+                            {/*    className="btn btn-default"*/}
+                            {/*    type="button"*/}
+                            {/*    onClick={connect}*/}
+                            {/*>*/}
+                            {/*    Connect*/}
+                            {/*</button>*/}
+                            {/*<button*/}
+                            {/*    id="disconnect"*/}
+                            {/*    className="btn btn-default"*/}
+                            {/*    type="button"*/}
+                            {/*    onClick={disconnect}*/}
+                            {/*>*/}
+                            {/*    Disconnect*/}
+                            {/*</button>*/}
                         </div>
                     </form>
                 </div>
@@ -130,7 +136,7 @@ function MyChat(props) {
                             onClick={clickHandler}
                             disabled={!connected}
                         >
-                            Send
+                            보내기
                         </button>
                     </form>
                 </div>
