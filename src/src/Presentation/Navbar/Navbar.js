@@ -1,8 +1,8 @@
-import {useAuthDispatch, useAuthState} from "../../AuthContext";
+import {useAuthDispatch, useAuthState} from "../../../AuthContext";
 import {Link} from "react-router-dom";
-import logo from '../../logo.png';
+import logo from '../../../logo.png';
 import stl from './Navbar.module.css';
-
+import {Nav_Link} from "./NavLink";
 export function Navbar() {
     const Login = useAuthState();
     const setLogin = useAuthDispatch();
@@ -45,7 +45,9 @@ export function Navbar() {
                     </Link>
                     <Link to={"/write"} className={stl.anchor}>글쓰기</Link>
                 </div>
-
+            </div>
+            <div>
+                <Nav_Link ></Nav_Link>
             </div>
         </>
     )
