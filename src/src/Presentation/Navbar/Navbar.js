@@ -3,52 +3,35 @@ import {Link} from "react-router-dom";
 import logo from '../../../logo.png';
 import stl from './Navbar.module.css';
 import {Nav_Link} from "./NavLink";
+import {NavHeader} from "./NavHeader";
+
 export function Navbar() {
     const Login = useAuthState();
     const setLogin = useAuthDispatch();
-
+    let header_url = ["blahblah"];
+    const LoginSub = ["로그인  ", "ログイン"];
+    const SignSub = ["회원가입  ", "Kaiin tōroku"];
+    const MyInfoSub = ["내가 쓴 글", " 신청한 글"];
+    const WriteSub = Login==true ? ["글 작성하기!"] : ["로그인 후 이용해주세요"];
+    const RecruitSub = ["마음껏 둘러보기!"];
     const setLogOut = () => {
         setLogin(false);
     }
     return (
         <>
-            <div className={stl.topNav}>
-                <div>
-                    URL List : carfull , etc...
+            <NavHeader header_url={header_url}></NavHeader>
+            <nav className={stl.NavBar}>
+                <Link to={"/"}><img src={logo} alt='' className={stl.logoImg}/></Link>
+                <div className={stl.FirstNav}>
+                    <Nav_Link title={"Login"} subTitles={LoginSub} LinkTo={"/login"}></Nav_Link>
+                    <Nav_Link title={"Sign up"} subTitles={SignSub} LinkTo={"/sign"}></Nav_Link>
+                    <Nav_Link title={"마이페이지"} subTitles={MyInfoSub} LinkTo={"/MyInfo"}></Nav_Link>
                 </div>
-            </div>
-            <nav className={stl.empty}>
-                <div className={stl.navWrapper}>
-                    <ul className={stl.navList}>
-                        <li>
-                            {
-                                Login ? <Link onClick={setLogOut} to={"/"} className={stl.anchor}>Logout</Link>
-                                    : <Link to={"/login"} className={stl.anchor}>Login</Link>
-                            }
-                        </li>
-
-                        <Link to={"/sign"} className={stl.anchor}>Sign Up</Link>
-                        <li class기Name={stl.logoWrapper}>
-                            <Link to={"/"}><img src={logo} alt='' className={stl.logoImg}/></Link>
-                        </li>
-                        <li>
-                            <Link to={"/MyInfo"} className={stl.anchor}>마이페이지</Link>
-
-                        </li>
-                    </ul>
+                <div className={stl.SecondNav}>
+                    <Nav_Link title={"글쓰기"} subTitles={WriteSub} LinkTo={"/write"}></Nav_Link>
+                    <Nav_Link title={"둘러보기"} subTitles={RecruitSub} LinkTo={"/recruit"}></Nav_Link>
                 </div>
             </nav>
-            <div className={stl.subNav}>
-                <div className={stl.subContent}>
-                    <Link to={"/recruit"} className={stl.anchor}>
-                        둘러보기
-                    </Link>
-                    <Link to={"/write"} className={stl.anchor}>글쓰기</Link>
-                </div>
-            </div>
-            <div>
-                <Nav_Link ></Nav_Link>
-            </div>
         </>
     )
 }
