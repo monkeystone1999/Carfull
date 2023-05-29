@@ -20,7 +20,8 @@ export const API = {
     CHANGE_PAWD : '/withcar/myInfo/change-pw',
     CHAT : '/withcar/gs-guide-websocket',
     GREET : '/withcar/topic/greetings',
-    CHAT_SEND : '/withcar/app/hello'
+    CHAT_SEND : '/withcar/app/hello',
+    LOAD_CHAT : '/withcar/recruit/init'
 
 }
 

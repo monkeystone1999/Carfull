@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useMemo, useState} from "react";
 import {API} from "../../config";
 import {Client} from "@stomp/stompjs";
+import axios from "axios";
 
 
 function MyChat(props) {
@@ -8,8 +9,9 @@ function MyChat(props) {
     const { recruitPostID, title } = props;
     const [connected, setConnected] = useState(false);
     const [message, setMessage] = useState("");
-    const [greetings, setGreetings] = useState([]);
+    const [allMessage, setallMessage] = useState([]);
     const [receivedMsg, setReceivedMsg] = useState("");
+    const [loadMessage, setLoadMessage] = useState(false);
     // const connect = () => {
     //     // const socket = new SockJs(`${API.CHAT}`);
     //     // const client = StompJs.over(socket);
@@ -19,6 +21,12 @@ function MyChat(props) {
     //
     //     console.log("Connected");
     // };
+
+    // ==========메시지 객체 정보===========
+    // private final String msgID;
+	// private final String content;
+	// private final String nick;
+	// private final String time;
 
     const stompClient = useMemo(() => {
         let client = new Client();
@@ -39,38 +47,42 @@ function MyChat(props) {
                 return client;
     }, []);
 
+    // 처음에 이전 메시지 불러오기
+    useEffect(() => {
+        axios({
+            url:`${API.LOAD_CHAT}/`+recruitPostID,
+            method:'post',
+        }).then((res)=>{
+            // res.data.map((initMsg) => {
+            //     setallMessage([...allMessage, initMsg]);
+            // });
+            setallMessage(res.data);
+        });
+      console.log(allMessage);
+      setLoadMessage(true);
+    }, []);
+    
+    //메시지 수신받을 때
     useEffect(() => {
         if(receivedMsg != "") { 
-            setGreetings([...greetings, JSON.parse(receivedMsg)]);
+            setallMessage([...allMessage, JSON.parse(receivedMsg)]);
         }
     }, [receivedMsg]);
+
+    // 이전 메시지 받아왔을 때 채팅서버 연결
     useEffect(()=>{
         setTimeout(()=>{
             stompClient.activate();
             setConnected(true);
         },100)
-    },[])
+    },[loadMessage]);
     
-    const clickHandler = () => {
+    // 메시지 전송할 때
+    const sendMessage = () => {
         let token = localStorage.getItem("access_token")
         stompClient.publish({destination: `/app/recruit/`+recruitPostID, 
         body: JSON.stringify({ message, token })});
     }
-
-    // useEffect(() => {
-    //     if (stompClient !== null) {
-    //         stompClient.connect({}, (frame) => {
-    //             setConnected(true);
-    //             console.log("Connected: " + frame);
-    //             stompClient.subscribe(`${API.GREET}`, (greeting) => {
-    //                 console.log(greeting);
-    //                 const message = JSON.parse(greeting.body).content;
-    //                 setGreetings((prevGreetings) => [...prevGreetings, message]);
-    //             });
-    //         });
-    //     }
-    // }, [stompClient]);
-
 
     const disconnect = () => {
         if (stompClient !== null) {
@@ -79,10 +91,6 @@ function MyChat(props) {
         setConnected(false);
         console.log("Disconnected");
     };
-
-    // const sendName = () => {
-    //     stompClient.send(`${API.CHAT_SEND}`, {}, JSON.stringify({ name }));
-    // };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -94,7 +102,7 @@ function MyChat(props) {
                 <div className="col-md-6">
                     <form className="form-inline" onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="connect">WebSocket connection: {connected ?
+                            <label htmlFor="connect">연결 상태: {connected ?
                                 <span>접속 되었습니다!</span>
                             :<span>접속 중입니다</span>}</label>
                             {/*<button*/}
@@ -133,7 +141,7 @@ function MyChat(props) {
                             id="send"
                             className="btn btn-default"
                             type="button"
-                            onClick={clickHandler}
+                            onClick={sendMessage}
                             disabled={!connected}
                         >
                             보내기
@@ -146,11 +154,11 @@ function MyChat(props) {
                     <table className="table table-striped">
                         <thead>
                         <tr>
-                            <th>Greetings</th>
+                            <th>채팅 내역</th>
                         </tr>
                         </thead>
-                        <tbody id="greetings">
-                        {greetings.map((message, index) => (
+                        <tbody id="allMessage">
+                        {allMessage.map((message, index) => (
                             <tr key={index}>
                                 <td>{message.nick} : {message.content}</td>
                             </tr>
