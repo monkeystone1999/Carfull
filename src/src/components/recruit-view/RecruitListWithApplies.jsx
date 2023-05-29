@@ -28,3 +28,5 @@ function RecruitListWithApplies(props) {
         </div>
     );
 }
+
+export default RecruitListWithApplies;

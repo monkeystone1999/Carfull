@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {API} from "../../config";
 import {MyInfoWriteTotal} from "../components/myInfo-write/myInfoWriteTotal";
+import { Navigate } from "react-router";
+import RecruitListWithApplies from "../components/recruit-view/RecruitList";
 
 function MyInfoWrite(props) {
     const [isWrite, setWrite] = useState([]);
@@ -11,10 +13,10 @@ function MyInfoWrite(props) {
     }, [])
 
     return (
-        <RecruitList
+        <RecruitListWithApplies
             recruitPosts={isWrite}
             onClickItem = {(item) =>{
-                navigate(`/detail/${item.recruitCarfullID}`);
+                Navigate(`/detail/${item.recruitCarfullID}`);
             }}
         />
         // <>

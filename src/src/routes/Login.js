@@ -1,6 +1,6 @@
 import {useAuthDispatch, useAuthState} from "../../AuthContext";
 import {redirect, useNavigate} from "react-router-dom";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import {LoginTotal} from "../Coupling/Login/LoginTotal";
 // import {LoginTotal} from "../components/login/loginTotal";
@@ -37,10 +37,10 @@ function LoginSubmit(formData, setLogin){
         data: formData,
         //     요까지
     })
-        .then((data) => {
-            const get_data = data.data.token;
-            localStorage.setItem('access_token', get_data['access_token'])
-            sessionStorage.setItem('refresh_token', get_data['refresh_token'])
+        .then((res) => {
+            const data = res.data.token;
+            localStorage.setItem('access_token', data['access_token'])
+            sessionStorage.setItem('refresh_token', data['refresh_token'])
             setLogin(true);
             redirect('/');
         })
