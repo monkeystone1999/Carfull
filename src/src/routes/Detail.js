@@ -13,11 +13,12 @@ function Detail(){
     const [isApplied, setApplied] = useState(false);
     const [isAccepted, setAccepted] = useState(false);
     const formData = new FormData();
-    
+    formData.append('recruit_ID', parseInt(detail));
+    const access_token = localStorage.getItem("access_token");
+
+
     useEffect(()=>{
-        const access_token = localStorage.getItem("access_token");
-        formData.append('recruit_ID', parseInt(detail));
-        getDetail(parseInt(detail), setDetail);
+    getDetail(parseInt(detail), setDetail);
         if(access_token){
             checkIsMine(formData, access_token, setMine);
         }
@@ -43,6 +44,7 @@ function Detail(){
 
 export {Detail}
 
+// carfullRecruitNotApplied = 내가 신청 안한거임 carfullRecruitApplyNotfound = 신청안했기에 그냥 같이 뜨는거임
 /**처음 들어갈때 기본적인 정보를 요청**/
 const getDetail = (detail, setDetail)=>{
     axios({
@@ -86,7 +88,7 @@ const checkIsApplied = (formData, setApplied) => {
             Authorization: "Bearer " + access_token,
         }
     }).then(res => {
-        if(res.data) {
+        if(res.data == true) {
             // 신청했으면 true
             // 신청안했으면 carfullRecruitNotApplied
             setApplied(true);
@@ -108,7 +110,7 @@ const checkIsAccepted = (formData, setAccepted) => {
             Authorization: "Bearer " + access_token,
         }
     }).then(res => {
-        if(res.data) {
+        if(res.data == true) {
             // 승낙했으면 true
             // 승낙안했으면 false
             setAccepted(true);

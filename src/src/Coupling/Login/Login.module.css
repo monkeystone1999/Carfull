@@ -1,0 +1,8 @@
+.Container{
+    width: 80vw;
+    max-width: 600px;
+    margin: 130px auto;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 10px;
+}

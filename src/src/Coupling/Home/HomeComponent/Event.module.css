@@ -1,0 +1,6 @@
+.Container{
+    background-image: url("./public/LinkToEvent.png");
+    background-size: contain;
+    width: 1000px;
+    height: 650px;
+}

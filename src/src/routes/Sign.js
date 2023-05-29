@@ -1,29 +1,23 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import {SignTotal} from "../components/sign/signTotal";
+// import {SignTotal} from "../components/sign/signTotal";
 import {API} from "../../config";
+import {SignTotal} from "../Coupling/Sign/SignTotal";
 
 function Sign(){
-    const [isID, setID] = useState("");
-    const [isPW, setPW] = useState("");
-    const [isPwCheck, setPwCheck] = useState("");
-    const [isNick, setNick] = useState("");
-    const [isGender, setGender] = useState("");
-    const [isEmail, setEmail] = useState("");
-    const [isPhoneNum, setPhoneNum] = useState("");
-    const [isAgree, setAgree] = useState(false);
+    // const [isID, setID] = useState("");
+    // const [isPW, setPW] = useState("");
+    // const [isPwCheck, setPwCheck] = useState("");
+    // const [isNick, setNick] = useState("");
+    // const [isGender, setGender] = useState("");
+    // const [isEmail, setEmail] = useState("");
+    // const [isPhoneNum, setPhoneNum] = useState("");
+    // const [isAgree, setAgree] = useState(false);
     const [isResult, setResult] = useState(false);
 
     const navigate = useNavigate();
     const formData = new FormData();
-    formData.append('id', isID);
-    formData.append('pw', isPW);
-    formData.append('pw_check', isPwCheck);
-    formData.append('nick', isNick);
-    formData.append('gender', isGender);
-    formData.append('email', isEmail);
-    formData.append('phone_number', isPhoneNum);
     // formData.append('agree', isAgree);
 
     useEffect(() => {
@@ -35,33 +29,8 @@ function Sign(){
     return(
         <>
             <SignTotal
-                idOnChange = {(event) => {
-                    setID(event.target.value);
-                }}
-                pwOnChange = {(event) => {
-                    setPW(event.target.value);
-                }}
-                pwCheckOnChange = {(event) => {
-                    setPwCheck(event.target.value);
-                }}
-                nickOnChange = {(event) => {
-                    setNick(event.target.value);
-                }}
-                genderOnChange = {(event) => {
-                    setGender(event.target.value);
-                }}
-                emailOnChange = {(event) => {
-                    setEmail(event.target.value);
-                }}
-                phoneOnChange = {(event) => {
-                    setPhoneNum(event.target.value);
-                    console.log(isPhoneNum);
-                }}
-                checkBoxOnChange = {(event) => {
-                    // label 에서 나오는 동의 값은
-                    setAgree(event.target.value);
-                    console.log(event.target.value);
-                }}
+                formData={formData}
+                setResult={setResult}
                 onClick = {() => {
                     SignSubmit(formData, setResult);
                 }}

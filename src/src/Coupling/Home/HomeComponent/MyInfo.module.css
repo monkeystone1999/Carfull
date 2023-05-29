@@ -1,0 +1,20 @@
+/*!* Group 1 *!*/
+.Container{
+    background: url("./public/LinkToMyInfo.png"), rgba(217, 217, 217, 0.5);
+    background-size: contain;
+    height: 442px;
+    width: 289px;
+    position: relative;
+}
+
+.Title{
+    position: absolute;
+    font-weight: lighter;
+    font-size: 24px;
+    color: white;
+    top: 40px;
+    left: 20px;
+}
+.Title > svg{
+    margin-bottom: 5px;
+}
