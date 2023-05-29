@@ -1,0 +1,14 @@
+.Container{
+    margin: 50px auto;
+}
+.Button{
+    font-size: 24px;
+    background-color: white;
+    border-radius: 10px;
+}
+.Buttons{
+    margin: 0px auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+}

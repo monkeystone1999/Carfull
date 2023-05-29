@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import SlideShow from "../components/home/SlideShow";
+import {HomeTotal} from "../Coupling/Home/HomeTotal";
 
 
 function Home(){
@@ -7,7 +7,7 @@ function Home(){
     
     return(
         <>
-            <SlideShow/>
+            <HomeTotal/>
         </>
     )
 }

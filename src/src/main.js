@@ -2,9 +2,7 @@ import React from "react";
 import {Navbar} from "./Presentation/Navbar/Navbar";
 import {Route, Routes} from "react-router-dom";
 
-
 /** Router 들 **/
-
 import {Login} from "./routes/Login";
 import {Recruit} from "./routes/Recruit";
 import {Detail} from "./routes/Detail";
@@ -22,7 +20,6 @@ import {IsLogin} from "./isLogin";
 function Main() {
     return (
         <>
-            <Navbar></Navbar>
             <Routes>
                 <Route path={"/"} element={<Home></Home>}></Route>
                 <Route path={"/login"} element={<Login></Login>}></Route>

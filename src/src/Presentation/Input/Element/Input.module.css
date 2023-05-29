@@ -1,0 +1,32 @@
+.Container{
+    position: relative;
+    width: 280px;
+    margin: 35px auto;
+}
+.text_input{
+    width: inherit;
+    height: 60px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.input_label{
+    position: absolute;
+    height: 20px;
+    left: 7px;
+    top: 12px;
+    font-size: 24px;
+    background-color: white;
+    transition: all 0.3s;
+}
+.text_input:focus ~ .input_label,
+.text_input:valid ~ .input_label
+{
+    transform: translateY(-30px);
+    transition: all 0.3s ease-in;
+    z-index: 3;
+}
+.text_input:focus{
+    border: 1px solid black;
+}
+

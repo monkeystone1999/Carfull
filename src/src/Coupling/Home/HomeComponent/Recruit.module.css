@@ -1,0 +1,22 @@
+.Container{
+    background-image: url("./public/LinkToRecruit.png");
+    background-size: contain;
+    width: 680px;
+    height: 442px;
+    position: relative;
+}
+.Title{
+    position: absolute;
+    left: 430px;
+    top: 100px;
+    font-weight: lighter;
+    font-size: 36px;
+    color: white;
+}
+.LinkTo{
+    padding-left: 100px;
+    font-size: 24px;
+}
+.LinkTo > svg{
+    margin-bottom: 5px;
+}

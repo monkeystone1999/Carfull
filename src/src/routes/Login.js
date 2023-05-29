@@ -1,8 +1,9 @@
 import {useAuthDispatch, useAuthState} from "../../AuthContext";
 import {redirect, useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import axios from "axios";
-import {LoginTotal} from "../components/login/loginTotal";
+import {LoginTotal} from "../Coupling/Login/LoginTotal";
+// import {LoginTotal} from "../components/login/loginTotal";
 
 
 function Login(){
@@ -10,11 +11,6 @@ function Login(){
     const isLogin = useAuthState();
     const setLogin = useAuthDispatch();
     const navigate = useNavigate();
-    const [isID, setID] = useState("");
-    const [isPW, setPW] = useState("");
-    formData.append('userId', isID);
-    formData.append('pw', isPW);
-    
     useEffect(()=>{
         if(isLogin){
             return navigate('/');
@@ -24,12 +20,7 @@ function Login(){
     return (
         <>
             <LoginTotal
-                idOnChange = {(event) => {
-                    setID(event.target.value);
-                }}
-                pwOnChange = {(event) => {
-                    setPW(event.target.value);
-                }}
+                formData={formData}
                 onClick = {() => {
                     LoginSubmit(formData, setLogin);
                 }}

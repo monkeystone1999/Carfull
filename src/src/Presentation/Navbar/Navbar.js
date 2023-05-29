@@ -1,37 +1,23 @@
 import {useAuthDispatch, useAuthState} from "../../../AuthContext";
 import {Link} from "react-router-dom";
-import logo from '../../../logo.png';
-import stl from './Navbar.module.css';
-import {Nav_Link} from "./NavLink";
-import {NavHeader} from "./NavHeader";
+import stl from './Element/Navbar.module.css';
 
 export function Navbar() {
     const Login = useAuthState();
     const setLogin = useAuthDispatch();
-    let header_url = ["blahblah"];
-    const LoginSub = ["로그인  ", "ログイン"];
-    const SignSub = ["회원가입  ", "Kaiin tōroku"];
-    const MyInfoSub = ["내가 쓴 글", " 신청한 글"];
-    const WriteSub = Login==true ? ["글 작성하기!"] : ["로그인 후 이용해주세요"];
-    const RecruitSub = ["마음껏 둘러보기!"];
     const setLogOut = () => {
         setLogin(false);
     }
     return (
         <>
-            <NavHeader header_url={header_url}></NavHeader>
+            <div className={stl.Container}>
             <nav className={stl.NavBar}>
-                <Link to={"/"}><img src={logo} alt='' className={stl.logoImg}/></Link>
-                <div className={stl.FirstNav}>
-                    <Nav_Link title={"Login"} subTitles={LoginSub} LinkTo={"/login"}></Nav_Link>
-                    <Nav_Link title={"Sign up"} subTitles={SignSub} LinkTo={"/sign"}></Nav_Link>
-                    <Nav_Link title={"마이페이지"} subTitles={MyInfoSub} LinkTo={"/MyInfo"}></Nav_Link>
+                <div className={stl.BrandName}><Link to={"/"}>CarFull</Link></div>
+                <div className={stl.RightSide}>
+                    <div className={stl.LoginLink}><Link to={"/login"}>Login</Link></div>
+                    <div className={stl.SignUpLink}><Link to={"/sign"}>SignUp</Link></div>
                 </div>
-                <div className={stl.SecondNav}>
-                    <Nav_Link title={"글쓰기"} subTitles={WriteSub} LinkTo={"/write"}></Nav_Link>
-                    <Nav_Link title={"둘러보기"} subTitles={RecruitSub} LinkTo={"/recruit"}></Nav_Link>
-                </div>
-            </nav>
+            </nav></div>
         </>
     )
 }
