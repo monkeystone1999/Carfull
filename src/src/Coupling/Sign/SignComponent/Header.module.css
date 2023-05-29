@@ -1,0 +1,12 @@
+.Container{
+    margin-bottom: 30px;
+}
+.Header{
+    margin: 30px auto;
+}
+.SignType{
+    font-size: 24px;
+    border-bottom: 1px solid #868686;
+    display: flex;
+    justify-content: space-around;
+}
