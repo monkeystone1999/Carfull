@@ -11,20 +11,26 @@ function MyInfoWrite(props) {
     }, [])
 
     return (
-        <>
-            {
-                isWrite.map((value,index)=>{
-                    return (<MyInfoWriteTotal
-                        title={value["boardTitle"]}
-                        fee={value["fee"]}
-                        personLimit={value["personLimit"]}
-                        startPoint={value["startPoint"]}
-                        endPoint={value["endPoint"]}
-                        comment={value["comment"]}
-                    />)
-                })
-            }
-        </>
+        <RecruitList
+            recruitPosts={isWrite}
+            onClickItem = {(item) =>{
+                navigate(`/detail/${item.recruitCarfullID}`);
+            }}
+        />
+        // <>
+        //     {
+        //         isWrite.map((value,index)=>{
+        //             return (<MyInfoWriteTotal
+        //                 title={value["boardTitle"]}
+        //                 fee={value["fee"]}
+        //                 personLimit={value["personLimit"]}
+        //                 startPoint={value["startPoint"]}
+        //                 endPoint={value["endPoint"]}
+        //                 comment={value["comment"]}
+        //             />)
+        //         })
+        //     }
+        // </>
     )
 }
 
