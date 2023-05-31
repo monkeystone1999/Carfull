@@ -12,6 +12,7 @@ function SignHeader(){
                 <div className={stl.SignType}>
                     <div className={` ${stl.CarFullLogin}`}>CarFull 회원가입</div>
                     <div className={`${stl.O2Auth}`}>O2Auth</div>
+                    <Link to={"/login"}>CarFull 로그인</Link>
                 </div>
             </div>
         </>

@@ -13,14 +13,16 @@ function SignTotal(props) {
     const [isEmail, setEmail] = useState("");
     const [isPhoneNum, setPhoneNum] = useState("");
     const [isAgree, setAgree] = useState(false);
-    formData.append('id', isID);
-    formData.append('pw', isPW);
-    formData.append('pw_check', isPwCheck);
-    formData.append('nick', isNick);
-    formData.append('gender', isGender);
-    formData.append('email', isEmail);
-    formData.append('phone_number', isPhoneNum);
-
+    const Submit = ()=>{
+        formData.append('id', isID);
+        formData.append('pw', isPW);
+        formData.append('pw_check', isPwCheck);
+        formData.append('nick', isNick);
+        formData.append('gender', isGender);
+        formData.append('email', isEmail);
+        formData.append('phone_number', isPhoneNum);
+        onClick();
+    }
     return (
         <>
             <div className={stl.Container}>
@@ -50,7 +52,7 @@ function SignTotal(props) {
                     setAgree={(event) => {
                         setAgree(event.target.value)
                     }}
-
+                    onClick={Submit}
                 />
             </div>
         </>

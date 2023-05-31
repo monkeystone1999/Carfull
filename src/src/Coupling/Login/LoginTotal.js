@@ -7,8 +7,12 @@ function LoginTotal(props) {
     const { onClick, formData} = props;
     const [isID, setID] = useState("");
     const [isPW, setPW] = useState("");
-    formData.append('userId', isID);
-    formData.append('pw', isPW);
+    const Submit = ()=>{
+        formData.append('userId', isID);
+        formData.append('pw', isPW);
+        onClick();
+    }
+
     return (
         <>
             <div className={stl.Container}>
@@ -17,7 +21,7 @@ function LoginTotal(props) {
                     setID(event.target.value)
                 }} pwOnChange={(event)=>{
                     setPW(event.target.value)
-                }} onClick={onClick}/>
+                }} onClick={Submit}/>
             </div>
         </>
     )

@@ -2,9 +2,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {API} from "../../config";
-import {callInfo, setInfo} from "../../reducer/store";
-import {Link} from "react-router-dom";
-import {MyInfoTotal} from "../components/myInfo/myInfoTotal";
+import {MyInfoTotal} from "../Coupling/MyInfo/MyInfoTotal";
+// import {MyInfoTotal} from "../components/myInfo/myInfoTotal";
 
 function MyInfo(){
     // const dispatch = useDispatch();
@@ -27,7 +26,6 @@ function MyInfo(){
                 nick={Myinfo.nick}
                 userId={Myinfo.userId}
             />
-            {/* <Link to={"/MyChat"}>채팅하기</Link> */}
         </>
     )
 }
