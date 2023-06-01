@@ -1,0 +1,7 @@
+.Container{
+    margin: 0px auto;
+    width: 80vw;
+    max-width: 1200px;
+    display: flex;
+    gap: 30px;
+}

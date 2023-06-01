@@ -13,6 +13,9 @@ function MyInfoBody() {
                 <div className={stl.Apply}>
                     <Link to={`/MyInfo/apply`}>신청 내역</Link>
                 </div>
+                <div className={stl.Write}>
+                    <Link to={`/write`}>신청 내역</Link>
+                </div>
             </div>
         </>
     )
