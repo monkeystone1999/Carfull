@@ -14,7 +14,7 @@ function MyInfoBody() {
                     <Link to={`/MyInfo/apply`}>신청 내역</Link>
                 </div>
                 <div className={stl.Write}>
-                    <Link to={`/write`}>신청 내역</Link>
+                    <Link to={`/write`}>모집 하기</Link>
                 </div>
             </div>
         </>
