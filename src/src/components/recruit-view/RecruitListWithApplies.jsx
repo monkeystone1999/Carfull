@@ -2,10 +2,12 @@ import React from 'react';
 import stl from './RecruitPost.module.css';
 import MyRecruitApplies from './myRecruitApplies';
 import RecruitListItem from './RecruitListItem';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import MyRecruitAcceptedApplies from './MyRecruitAcceptedApplies';
 
 function RecruitListWithApplies(props) {
     const { recruitPosts } = props;
+    const navigate = useNavigate();
 
     return (
         <div className={stl.recruitListWrapper}>
@@ -15,14 +17,26 @@ function RecruitListWithApplies(props) {
                         <RecruitListItem
                             key={recruitPost.recruitCarfullID}
                             recruitPost={recruitPost}
-                            onClick={(item) => {
-                                Navigate(`/detail/${item.recruitCarfullID}`);
+                            onClick={() => {
+                                navigate(`/detail/${recruitPost.recruitCarfullID}`);
                             }}
                         />
-                        <MyRecruitApplies
-                            key={recruitPost.recruitCarfullID}
-                            recruitPost={recruitPost}
-                        />
+                        <div className={stl.myRecruitAppliesContainer}>
+                            <div className={stl.myRecruitAppliesLeft}>
+                                <MyRecruitAcceptedApplies
+                                    key={recruitPost.recruitCarfullID}
+                                    recruitPost = {recruitPost}
+                                />
+                            </div>
+
+                            <div className={stl.myRecruitAppliesRight}>
+                                <MyRecruitApplies
+                                    key={recruitPost.recruitCarfullID}
+                                    recruitPost={recruitPost}
+                                />
+                            </div>
+                        </div>
+                        
                     </>
                 );
             })}
