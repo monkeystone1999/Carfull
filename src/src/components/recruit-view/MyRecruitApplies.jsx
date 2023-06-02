@@ -25,14 +25,15 @@ function MyRecruitApplies(props) {
       }, []);
 
     return (
-        <div className={stl.recruitListWrapper}>
+        <div>
+            <h2>카풀 신청자 목록</h2>
             {applies.map((apply, index) => {
                 //debug
                 // console.log(apply);
                 return (
                     <>
                         <hr />
-                        <div><h2>{apply.applicant.idNumber} | {apply.applicant.nick}</h2></div>
+                        <h4>{apply.applicant.idNumber} | {apply.applicant.nick}</h4>
                         <div>
                             <button onClick={() => AcceptApply(apply.applyId, refresh ,setRefresh)}>수락</button>
                             <button onClick={() => DenyApply(apply.applyId, refresh, setRefresh)}>거절</button>
@@ -49,7 +50,7 @@ function AcceptApply(applyID, refresh, setRefresh) {
     formData_applyID.append('recruit_ID', parseInt(applyID));
 
     axios({
-        url: `/withcar/recruit/accept`,
+        url: API.RECRU_APL_ACCEPT,
         method: 'post',
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access_token")
@@ -57,7 +58,7 @@ function AcceptApply(applyID, refresh, setRefresh) {
         data: formData_applyID
         }).then(res => {
             //setApplies(res.data);
-            // setRefresh(!refresh);
+            setRefresh(!refresh);
         }).catch(err => console.log(err))
 }
 
@@ -66,7 +67,7 @@ function DenyApply(applyID, refresh, setRefresh) {
     formData_applyID.append('recruit_ID', parseInt(applyID));
 
     axios({
-        url: `/withcar/recruit/deny`,
+        url: API.RECRU_APL_DENY,
         method: 'post',
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access_token")
@@ -74,7 +75,7 @@ function DenyApply(applyID, refresh, setRefresh) {
         data: formData_applyID
         }).then(res => {
            // setApplies(res.data);
-        //    setRefresh(!refresh);
+           setRefresh(!refresh);
         }).catch(err => console.log(err))
 }
 
