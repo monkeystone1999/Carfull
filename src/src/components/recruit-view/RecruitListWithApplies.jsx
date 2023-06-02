@@ -1,7 +1,8 @@
-import React from 'react'
-import {useEffect, useState} from "react";;
+import React from 'react';
 import stl from './RecruitPost.module.css';
 import MyRecruitApplies from './myRecruitApplies';
+import RecruitListItem from './RecruitListItem';
+import { Navigate } from 'react-router-dom';
 
 function RecruitListWithApplies(props) {
     const { recruitPosts } = props;
@@ -12,14 +13,14 @@ function RecruitListWithApplies(props) {
                 return (
                     <>
                         <RecruitListItem
-                            key={recruitPost.id}
+                            key={recruitPost.recruitCarfullID}
                             recruitPost={recruitPost}
-                            onClick={() => {
-                                onClickItem(recruitPost);
+                            onClick={(item) => {
+                                Navigate(`/detail/${item.recruitCarfullID}`);
                             }}
                         />
                         <MyRecruitApplies
-                            key={recruitPost.id}
+                            key={recruitPost.recruitCarfullID}
                             recruitPost={recruitPost}
                         />
                     </>

@@ -3,7 +3,7 @@ import axios from "axios";
 import {API} from "../../config";
 import {MyInfoWriteTotal} from "../components/myInfo-write/myInfoWriteTotal";
 import { Navigate } from "react-router";
-import RecruitListWithApplies from "../components/recruit-view/RecruitList";
+import RecruitListWithApplies from "../components/recruit-view/RecruitListWithApplies";
 
 function MyInfoWrite(props) {
     const [isWrite, setWrite] = useState([]);
