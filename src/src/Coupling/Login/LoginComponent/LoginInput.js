@@ -3,7 +3,7 @@ import {Input} from "../../../Presentation/Input/Input";
 import {Link} from "react-router-dom";
 
 function LoginInput(props) {
-    const {idOnChange, onClick, pwOnChange} = props;
+    const {idOnChange, onClick, pwOnChange } = props;
     return (
         <>
             <div className={stl.Container}>

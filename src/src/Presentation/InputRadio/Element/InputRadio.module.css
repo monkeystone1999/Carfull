@@ -1,0 +1,33 @@
+
+.Container{
+    width: 250px;
+     display: flex;
+     align-items: center;
+     justify-content: space-evenly;
+    margin: 0 auto;
+}
+.labelContainer{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+}
+.labelContainer > span{
+    font-size: 24px;
+}
+.Radio{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.labelContainer > input[type="radio"]{
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    transition: 0.2s all linear;
+    margin: 5px;
+    background-color: white;
+}
+.Radio:checked{
+    border: 6px solid black;
+}

@@ -1,0 +1,27 @@
+.Container{
+
+}
+.Row{
+
+    display: flex;
+    justify-content: flex-end;
+}
+.UserInfo{
+    border-left: 1px solid black;
+    width: 300px;
+    padding: 20px;
+}
+.UserId{}
+.UserNick{
+    font-size: 36px;
+    text-align: center;
+}
+.User{
+
+    margin: 20px;
+    padding: 30px;
+}
+.User> svg{
+    padding-bottom: 30px;
+    margin: 20px;
+}

@@ -1,0 +1,17 @@
+.Container{
+    margin-bottom: 30px;
+}
+.Header{
+    margin: 30px auto;
+}
+.LoginType{
+    font-size: 24px;
+    border-bottom: 1px solid #868686;
+    display: flex;
+    justify-content: space-around;
+}
+.Button{
+    font-size: 24px;
+    background-color: white;
+    border-radius: 10px;
+}

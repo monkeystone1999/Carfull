@@ -5,7 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="https://naveropenapi.apigw.ntruss.com/map-static/v2/raster?X-NCP-APIGW-API-KEY-ID=k5kmhif9le&X-NCP-APIGW-API-KEY=Lbq1zIwPLXDW9bQqtRcQZwiZbxgNOvUmfAWkB27Z">
+        var mapDiv = document.getElementById('map');
 
+        var map = new naver.maps.Map(mapDiv);
+    </script>
     <title>Document</title>
     <style>
         .Card{
@@ -14,7 +18,15 @@
             border-radius: 10px;
             display: flex;
             flex-direction: column;
-            border: 1px solid black;
+            background: rgba( 255, 255, 255, 0 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 4px );
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            transition-delay: 0.1s;
+        }
+        .Card:hover{
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
         }
         .Card_Title{
             padding: 13px;
@@ -38,10 +50,13 @@
       </div>
       <div class="Card_Descript">
           <div class="Fee">
-
           </div>
 <!--현재 인원수 시작, 도착-->
       </div>
+      <div id="map" style="width:100%; height:800px;"></div>
   </div>
+<script>
+    var map = new naver.maps.Map('map');
+</script>
 </body>
 </html>
