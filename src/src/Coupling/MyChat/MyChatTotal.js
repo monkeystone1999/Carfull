@@ -10,15 +10,6 @@ function MyChatTotal(props){
                     <div className="col-md-6">
                         <form className="form-inline" onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <label htmlFor="connect">WebSocket connection: {connected ?
-                                    <span>접속 되었습니다!</span>
-                                    :<span>접속 중입니다</span>}</label>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="col-md-6">
-                        <form className="form-inline" onSubmit={handleSubmit}>
-                            <div className="form-group">
                                 <label htmlFor="name">{title}의 채팅</label>
                                 <input
                                     type="text"
