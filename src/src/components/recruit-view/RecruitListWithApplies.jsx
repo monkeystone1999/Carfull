@@ -4,6 +4,7 @@ import MyRecruitApplies from './myRecruitApplies';
 import RecruitListItem from './RecruitListItem';
 import { Navigate, useNavigate } from 'react-router-dom';
 import MyRecruitAcceptedApplies from './MyRecruitAcceptedApplies';
+import MyRecruitStatus from './MyRecruitStatus';
 
 function RecruitListWithApplies(props) {
     const { recruitPosts } = props;
@@ -36,6 +37,11 @@ function RecruitListWithApplies(props) {
                                 />
                             </div>
                         </div>
+
+                        <MyRecruitStatus
+                            key={recruitPost.recruitCarfullID}
+                            recruitPost={recruitPost}
+                        />
                         
                     </>
                 );
