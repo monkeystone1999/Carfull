@@ -5,3 +5,12 @@
 .fontBold{
     font-weight: bold;
 }
+button{
+    border-radius: 30px;
+    padding: 0px 7px;
+    background-color: white;
+    border: 1px solid black;
+}
+button:hover{
+    
+}

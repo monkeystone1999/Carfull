@@ -2,7 +2,7 @@ import React from "react";
 
 
 function MyChatTotal(props){
-    const {handleSubmit, connected, title, message, setMessage,clickHandler,greetings} = props;
+    const {handleSubmit, connected, title, message, setMessage,clickHandler,greetings, setDialog} = props;
     return(
         <>
             <div className="container">
@@ -49,6 +49,9 @@ function MyChatTotal(props){
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div>
+                    <button onClick={()=>{setDialog(false)}}>나가기</button>
                 </div>
             </div>
         </>

@@ -19,7 +19,7 @@ function MyInfoApplyTotal(props){
             {
                 isDialog == false ?
                     <button onClick={()=>{setDialog(true)}}>채팅하기</button>:
-                    <MyChatTotal recruitPostID={recruitPostID} title={title} />
+                    <MyChatTotal recruitPostID={recruitPostID} title={title} setDialog={setDialog}/>
             }
         </>
     )
