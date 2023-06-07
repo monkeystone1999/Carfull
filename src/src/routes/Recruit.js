@@ -1,8 +1,9 @@
 import {useNavigate} from "react-router-dom";
 import {API} from "../../config";
-import RecruitList from "../components/recruit-view/RecruitList";
+// import RecruitList from "../components/recruit-view/RecruitList";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {RecruitTotal} from "../Coupling/Recruit/RecruitTotal";
 
 function Recruit(){
 
@@ -19,7 +20,7 @@ function Recruit(){
       }, []);
 
     return (
-        <RecruitList
+        <RecruitTotal
             recruitPosts={recruitBoard}
             onClickItem = {(item) =>{
                 navigate(`/detail/${item.recruitCarfullID}`);

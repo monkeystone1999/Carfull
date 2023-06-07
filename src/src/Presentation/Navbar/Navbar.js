@@ -17,7 +17,7 @@ export function Navbar() {
                 <div className={stl.RightSide}>
                     {
                         Login==true ?
-                            <div onClick={()=>{setLogOut()}}>LogOut</div>
+                            <div className={stl.LogOut} onClick={()=>{setLogOut()}}>LogOut</div>
                             : <div className={stl.LoginLink}><Link to={"/login"}>Login</Link></div>
                     }
 

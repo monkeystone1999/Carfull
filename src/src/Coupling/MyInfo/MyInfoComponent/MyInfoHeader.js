@@ -28,7 +28,14 @@ function MyInfoHeader(props) {
 
                         <div className={stl.UserNick}>닉네임 : {nick}</div>
                         <div className={stl.Email}> E-mail : {email}</div>
-                        <Link to={"/MyInfo/change_pw"}>비밀번호 변경하기</Link>
+                        <div className={stl.Buttons}>
+                            <button>
+                                <Link to={"/MyInfo/change_pw"}>비밀번호 변경하기</Link>
+                            </button>
+                            <button>
+                                내 기록 보기
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

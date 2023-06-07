@@ -1,13 +1,18 @@
 import stl from "./Card.module.css";
+import moment from "moment/moment";
+import {Card} from "../../../Presentation/Card/Card";
 
 function RecruitCard(props){
     const {key, recruitPost, onClick} = props;
+
+    let startDate = moment(recruitPost.startTime, "YYYY-MM-DD'T'HH:mm:ss").format('YYYY-MM-DD hh:mm');
     return (
         <>
             <div className={stl.Container}>
-                <div className={stl.Header}>
-
-                </div>
+                <Card
+                    recruitPost={recruitPost}
+                    onClick={onClick}
+                />
             </div>
         </>
     )

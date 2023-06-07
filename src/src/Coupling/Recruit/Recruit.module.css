@@ -1,7 +1,12 @@
 .Container{
-    margin: 0px auto;
-    width: 80vw;
-    max-width: 1200px;
     display: flex;
+    border: 1px solid black;
     gap: 30px;
+    margin: 30px auto;
+    max-width: 1200px;
+    width: 80vw;
+    flex-wrap: wrap;
+    border-radius: 30px;
+    padding: 20px 5px;
+    justify-content: center;
 }

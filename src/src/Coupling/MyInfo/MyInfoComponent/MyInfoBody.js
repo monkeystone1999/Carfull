@@ -38,13 +38,13 @@ function MyInfoBody() {
                     })
                 }
                 </div>
-                <div className={stl.Body}>
                 {
                     Tab == true ?
-                        content[isTab].des
+                        <div className={stl.Body}>
+                            {content[isTab].des}
+                        </div>
                         : null
                 }
-                </div>
             </div>
         </>
     )

@@ -1,0 +1,18 @@
+
+
+.Container{
+    font-size: 36px;
+    margin: 130px auto 10px;
+    max-width: 600px;
+    text-align: center;
+    width: 80vw;
+    border-left: 4px double black;
+    border-right: 4px double black;
+    padding: 40px;
+}
+.Header{
+    margin: 40px;
+}
+.ButtonSub{
+    font-size: 24px;
+}

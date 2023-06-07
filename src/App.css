@@ -10,7 +10,16 @@ button{
     padding: 0px 7px;
     background-color: white;
     border: 1px solid black;
+    transition: all 0.3s ease-in;
 }
 button:hover{
-    
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+a:hover{
 }

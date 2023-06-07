@@ -7,6 +7,7 @@ function MyInfoApplyTotal(props){
     const {recruitPostID ,title, fee, personLimit, startPoint, endPoint, comment} = props
     return (
         <>
+
             <div><br/></div>
             <div>제목 : {title}</div>
             <div>가격 : {fee}</div>

@@ -1,6 +1,7 @@
 import {useState} from "react";
 import axios from "axios";
 import {API} from "../../config";
+import {MyInfoChangePWTotal} from "../Coupling/MyInfoChangePW/MyInfoChangePWTotal";
 
 
 function MyInfoChangePW(){
@@ -12,19 +13,18 @@ function MyInfoChangePW(){
     // 비밀번호를 한번 확인하는 과정을 추가해야할듯
     return(
         <>
-            <input
-                onChange={(e)=>{
+            <MyInfoChangePWTotal
+                setExPW={(e)=>{
                     setExPW(e.target.value);
                 }}
-            />
-            <input
-                onChange={(e)=>{
-                    setPW(e.target.value);
+                setPW={
+                    (e)=>{
+                        setPW(e.target.value);
+                }}
+                onClick={()=>{
+                    MyInfoChangePWSubmit(formData);
                 }}
             />
-            <button onClick={()=>{
-                MyInfoChangePWSubmit(formData);
-            }}>제출하기</button>
         </>
     )
 }
