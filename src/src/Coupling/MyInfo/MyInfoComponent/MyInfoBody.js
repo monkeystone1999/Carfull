@@ -4,7 +4,6 @@ import React, {useState} from "react";
 import {MyInfoApply} from "../../../routes/MyInfoApply";
 import {Write} from "../../../routes/Write";
 import {MyInfoWrite} from "../../../routes/MyInfoWrite";
-import {NULL} from "node-sass";
 
 
 function MyInfoBody() {
@@ -22,6 +21,7 @@ function MyInfoBody() {
     return (
         <>
             <div className={stl.Container}>
+                <div className={stl.Header}>
                 {
                     content.map((value, index) => {
                         return <button onClick={() => {
@@ -37,12 +37,14 @@ function MyInfoBody() {
                         }}>{value.title}</button>
                     })
                 }
+                </div>
+                <div className={stl.Body}>
                 {
                     Tab == true ?
                         content[isTab].des
-                        : NULL
+                        : null
                 }
-
+                </div>
             </div>
         </>
     )

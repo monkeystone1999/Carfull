@@ -2,7 +2,6 @@
 
 }
 .Row{
-
     display: flex;
     justify-content: flex-end;
 }
@@ -11,17 +10,22 @@
     width: 300px;
     padding: 20px;
 }
-.UserId{}
 .UserNick{
     font-size: 36px;
-    text-align: center;
+    text-align: left;
 }
 .User{
-
     margin: 20px;
     padding: 30px;
+    border-left: 3px double black;
+    text-align: center;
+    margin-bottom: 17px;
 }
-.User> svg{
+.User svg{
     padding-bottom: 30px;
     margin: 20px;
+}
+.Email{
+    text-align: left;
+    padding-left: 4px;
 }

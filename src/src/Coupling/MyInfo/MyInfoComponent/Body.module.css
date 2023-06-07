@@ -1,7 +1,13 @@
 .Container{
+    max-width: 1200px;
+}
+.Header{
     display: flex;
     justify-content: space-around;
     height: 100px;
     align-items: center;
-    border-top: 1px solid black;
+    border-top: 2px solid black;
+}
+.Body{
+    width: inherit;
 }

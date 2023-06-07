@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {API} from "../../config";
-import {MyInfoWriteTotal} from "../components/myInfo-write/myInfoWriteTotal";
 import { Navigate } from "react-router";
 import RecruitListWithApplies from "../components/recruit-view/RecruitListWithApplies";
 

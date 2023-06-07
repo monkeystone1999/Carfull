@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { MyChat } from '../../routes/MyChat';
 import {Link} from "react-router-dom";
 import {MyChatTotal} from "../../Coupling/MyChat/MyChatTotal";
 
