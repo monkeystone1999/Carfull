@@ -4,7 +4,8 @@ import React, {useState} from "react";
 import {MyInfoApply} from "../../../routes/MyInfoApply";
 import {Write} from "../../../routes/Write";
 import {MyInfoWrite} from "../../../routes/MyInfoWrite";
-
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 function MyInfoBody(props) {
     const {nick} = props
@@ -17,39 +18,25 @@ function MyInfoBody(props) {
     }
     ]
 
-    const [isTab, setTab] = useState(Number);
-    const [Tab, onTab] = useState(false);
     return (
-        <>
-            <div className={stl.Container}>
-                <div className={stl.Header}>
-                {
-                    content.map((value, index) => {
-                        return <button onClick={() => {
-                            if(isTab == index){
-                                onTab(false);
-                                setTab(Number);
-                            }
-                            else{
-                                setTab(index);
-                                onTab(true);
-                            }
-
-                        }}>{value.title}</button>
-                    })
-                }
-                </div>
-                {
-                    Tab == true ?
-                        <div className={stl.Body}>
-                            {content[isTab].des}
-                        </div>
-                        : null
-                }
-            </div>
-        </>
-    )
+        <Tabs
+        defaultActiveKey="profile"
+        id="myInfo-tabs"
+        className="m-3"
+        justify
+        variant="underline"
+        >
+            <Tab eventKey="home" title="작성 내역">
+                <MyInfoWrite/>
+            </Tab>
+            <Tab eventKey="profile" title="신청 내역">
+                <MyInfoApply nick={nick}/>
+            </Tab>
+            <Tab eventKey="contact" title="모집 하기">
+                <Write/>
+            </Tab>
+        </Tabs>
+    );
 }
 
 export {MyInfoBody}
-
