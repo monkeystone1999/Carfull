@@ -4,9 +4,10 @@ import axios from "axios";
 import {API} from "../../config";
 
 import RecruitWriteForm from "../components/recruit-write/RecruitWriteForm";
+import {Navbar} from "../Presentation/Navbar/Navbar";
 
 
-function Write(){
+function Write() {
     const [isTitle, setTitle] = useState("");
     const [isFee, setFee] = useState("");
     const [isLimit, setLimit] = useState("");
@@ -24,39 +25,41 @@ function Write(){
     formData.append("endPoint", isEnd);
     formData.append("startTime", isDate);
     formData.append("comment", isComment);
-    useEffect(()=>{
-        if(isWrite){
+    useEffect(() => {
+        if (isWrite) {
             navigate("/")
         }
     }, [isWrite])
     return (
-        <RecruitWriteForm
-            titleOnChange={(event) => {
-                setTitle(event.target.value);
-            }}
-            feeOnChange={(event) => {
-                setFee(event.target.value);
-            }}
-            limitOnChange={(event) => {
-                setLimit(event.target.value);
-            }}
-            startPointOnChange={(event) => {
-                setStart(event.target.value);
-            }}
-            endPointOnChange={(event) => {
-                setEnd(event.target.value);
-            }}
-            commentOnChange={(event) => {
-                setComment(event.target.value);
-            }}
-            dateOnChange={(event) => {
-                setDate(event);
-            }}
-            onClick={() => {
-                WriteSubmit(formData, setWrite)
-            }}
-        />
-
+        <>
+            <Navbar/>
+            <RecruitWriteForm
+                titleOnChange={(event) => {
+                    setTitle(event.target.value);
+                }}
+                feeOnChange={(event) => {
+                    setFee(event.target.value);
+                }}
+                limitOnChange={(event) => {
+                    setLimit(event.target.value);
+                }}
+                startPointOnChange={(event) => {
+                    setStart(event.target.value);
+                }}
+                endPointOnChange={(event) => {
+                    setEnd(event.target.value);
+                }}
+                commentOnChange={(event) => {
+                    setComment(event.target.value);
+                }}
+                dateOnChange={(event) => {
+                    setDate(event);
+                }}
+                onClick={() => {
+                    WriteSubmit(formData, setWrite)
+                }}
+            />
+        </>
         // <>
         //     <WriteInput setTitle={setTitle} setFee={setFee} setLimit={setLimit} setStart={setStart}
         //                 setEnd={setEnd} setComment={setComment} ></WriteInput>
@@ -65,7 +68,7 @@ function Write(){
     )
 }
 
-const WriteSubmit = (formData, setResult)=>{
+const WriteSubmit = (formData, setResult) => {
     const Auth = localStorage.getItem("access_token");
     axios({
         url: `${API.WRITE}`,

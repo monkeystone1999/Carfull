@@ -1,11 +1,16 @@
 import stl from "./Element/FloatingButton.module.css"
+import {MyChat} from "../../routes/MyChat";
 
 function FloatingButton(){
 
     return(
         <>
-            <div className={stl.Container}>
-                +
+            <div className={stl.Container} onClick={()=>{
+                <MyChat
+
+                />
+            }}>
+                Chat
             </div>
         </>
     )

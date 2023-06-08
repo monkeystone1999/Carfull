@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {MyInfoApplyTotal} from "../components/myInfo-apply/myInfoApplyTotal";
+// import {MyInfoApplyTotal} from "../components/myInfo-apply/myInfoApplyTotal";
 import axios from "axios";
 import {API} from "../../config";
+import {MyInfoApplyTotal} from "../Coupling/MyInfoApply/MyInfoApplyTotal";
 
 
 function MyInfoApply(props){
+    const {nick} = props
     const [isApply, setApply] = useState([]);
 
     useEffect(()=>{
@@ -16,16 +18,10 @@ function MyInfoApply(props){
                 isApply.map((value, index) => {
                         return (
                             <MyInfoApplyTotal
-                                recruitPostID={value["recruitCarfullID"]}
-                                title={value["boardTitle"]}
-                                fee={value["fee"]}
-                                personLimit={value["personLimit"]}
-                                startPoint={value["startPoint"]}
-                                endPoint={value["endPoint"]}
-                                comment={value["comment"]}
+                                recruitPost={value}
+                                nick={nick}
                             />
                         )
-
                 })
             }
 

@@ -1,8 +1,8 @@
-import stl from "./Element/Card.module.css";
+import stl from "./Element/Card_2.module.css";
 
 
-function Card_2(props){
-    const {value, onClick} = props
+function Card_2(props) {
+    const {value, btn} = props
     return (
         <>
             <div className={`${stl.Card}`}>
@@ -10,15 +10,14 @@ function Card_2(props){
                     <span>제목 : {value.boardTitle}</span>
                 </div>
                 <div className={`${stl.Body}`}>
-                    <span>{value.startPoint}</span>
-                    <span>{value.endPoint}</span>
-                    <span>{value.fee}</span>
-                </div>
-                <div className={`${stl.CardHidden}`}>
-                    <div className={`${stl.HiddenBody}`}>
-                        <span>{value.applyPersonCount + `/` + value.personLimit}</span>
-                        <button onClick={onClick}>자세히 보기</button>
+                    <div className={`${stl.des}`}>
+                        <span>출발지 : {value.startPoint}</span>
+                        <span>도착지 : {value.endPoint}</span>
+                        <span>가격 : {value.fee}</span>
+                        <span>인원 : {value.applyPersonCount + `/` + value.personLimit}</span>
+                        <span>전달사항 : {value.comment}</span>
                     </div>
+                    {btn}
                 </div>
             </div>
         </>

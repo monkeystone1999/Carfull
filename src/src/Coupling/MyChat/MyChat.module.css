@@ -1,3 +1,52 @@
 .Container{
+    position: fixed;
+    width: 100vw;
+    height: 100vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    backdrop-filter: blur(4px);
+}
+.Des{
+    width: 80vw;
+    max-width: 700px;
+    height: auto;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 40px;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+.Forms {
+
+}
+.Input {
+    display: flex;
+    justify-content: center;
+}
+.Buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+.Submit{
+    margin-left: 50px;
+}
+.Chats{
+    overflow: auto;
+    height: 40vh;
+}
+.Mine{
+    display: flex;
+    justify-content: flex-end;
+}
+.Opponent{
 
 }

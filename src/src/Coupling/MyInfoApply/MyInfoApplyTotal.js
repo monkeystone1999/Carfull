@@ -1,21 +1,38 @@
 import {Link} from "react-router-dom";
-import React from "react";
+import React, {useState} from "react";
+import {Card_2} from "../../Presentation/Card/Card_2";
+import stl from "./MyInfoApply.module.css"
+import {MyChat} from "../../routes/MyChat";
 
-
-function MyInfoApplyTotal(props){
-    const {recruitPostID ,title, fee, personLimit, startPoint, endPoint, comment} = props
+function MyInfoApplyTotal(props) {
+    const {recruitPost,nick} = props
+    console.log(recruitPost)
+    // recruitPostID, title
+    const [onChat, setChat] = useState(false);
     return (
         <>
-            <div>
-            <div>제목 : {title}</div>
-            <div>가격 : {fee}</div>
-            <div>인원 수 제한 : {personLimit}</div>
-            <div>출발지 : {startPoint}</div>
-            <div>도착지 : {endPoint}</div>
-            <div>내용 : {comment}</div>
+            <div className={stl.Container}>
+                <Card_2
+                    value={recruitPost}
+                    btn={<button onClick={()=>{
+                        setChat(true);
+                    }}>
+                        채팅하기!
+                    </button>}
+                />
+                {
+                    onChat ? <MyChat
+                    setChat={setChat}
+                    onChat={onChat}
+                    nick={nick}
+                    recruitPostID={recruitPost.writeMember.idNumber}
+                    title={recruitPost.writeMember.userId
+                    }/> : null
+                }
+
             </div>
-            <Link to={"/MyChat"}>채팅하기!</Link>
         </>
     )
 }
+
 export {MyInfoApplyTotal}

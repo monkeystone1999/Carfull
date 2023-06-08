@@ -1,6 +1,7 @@
 import {useAuthDispatch, useAuthState} from "../../../AuthContext";
 import {Link, redirect} from "react-router-dom";
 import stl from './Element/Navbar.module.css';
+import {FloatingButton} from "../FloatingButton/FloatingButton";
 
 export function Navbar() {
     const Login = useAuthState();
@@ -11,6 +12,7 @@ export function Navbar() {
     }
     return (
         <>
+
             <div className={stl.Container}>
             <nav className={stl.NavBar}>
                 <div className={stl.BrandName}><Link to={"/"}>CarFull</Link></div>
@@ -23,7 +25,9 @@ export function Navbar() {
 
                     <div className={stl.SignUpLink}><Link to={"/sign"}>SignUp</Link></div>
                 </div>
-            </nav></div>
+            </nav>
+            </div>
+
         </>
     )
 }

@@ -6,11 +6,12 @@ import {Write} from "../../../routes/Write";
 import {MyInfoWrite} from "../../../routes/MyInfoWrite";
 
 
-function MyInfoBody() {
+function MyInfoBody(props) {
+    const {nick} = props
     const content = [{
         title: "작성 내역", des: <MyInfoWrite/>
     }, {
-        title: "신청 내역", des: <MyInfoApply/>
+        title: "신청 내역", des: <MyInfoApply nick={nick}/>
     }, {
         title: "모집 하기", des: <Write/>
     }

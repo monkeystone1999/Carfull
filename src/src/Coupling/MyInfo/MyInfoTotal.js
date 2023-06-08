@@ -11,7 +11,7 @@ function MyInfoTotal(props) {
             <Navbar/>
             <div className={stl.Container}>
                 <MyInfoHeader email={email} nick={nick} userId={userId}/>
-                <MyInfoBody/>
+                <MyInfoBody nick={nick}/>
             </div>
         </>
     )

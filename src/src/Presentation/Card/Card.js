@@ -7,16 +7,16 @@ function Card(props) {
         <>
             <div className={`${stl.Card}`}>
                 <div className={`${stl.Card_Title}`}>
-                    <span>{recruitPost.boardTitle}</span>
+                    <span>제목 : {recruitPost.boardTitle}</span>
                 </div>
                 <div className={`${stl.Body}`}>
-                    <span>{recruitPost.startPoint}</span>
-                    <span>{recruitPost.endPoint}</span>
-                    <span>{recruitPost.fee}</span>
+                    <span>출발지 : {recruitPost.startPoint}</span>
+                    <span>도착지 : {recruitPost.endPoint}</span>
+                    <span>가격 : {recruitPost.fee}</span>
                 </div>
                 <div className={`${stl.CardHidden}`}>
                     <div className={`${stl.HiddenBody}`}>
-                        <span>{recruitPost.applyPersonCount + `/` + recruitPost.personLimit}</span>
+                        <span>인원 수 :{recruitPost.applyPersonCount + `/` + recruitPost.personLimit}</span>
                         <button onClick={onClick}>자세히 보기</button>
                     </div>
                 </div>
