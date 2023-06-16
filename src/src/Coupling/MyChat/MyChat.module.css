@@ -47,6 +47,17 @@
     display: flex;
     justify-content: flex-end;
 }
+.MineChat {
+    border: 1px solid black;
+    width: fit-content;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 30px;
+    background: yellow;
+}
 .Opponent{
-
+    border: 1px solid black;
+    width: fit-content;
+    padding: 16px;
+    border-radius: 30px;
 }

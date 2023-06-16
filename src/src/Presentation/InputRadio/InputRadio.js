@@ -9,7 +9,7 @@ function InputRadio(props){
                     <span>{Lname}</span>
                 </label>
                 <label className={`${stl.labelContainer}`}>
-                    <input className={`${stl.Radio}`} type={"radio"} name={name} value={Rvalue} id={Rname}  chekced="true" ></input>
+                    <input className={`${stl.Radio}`} type={"radio"} name={name} value={Rvalue} id={Rname} onChange={setAgree} checked></input>
                     <span>{Rname}</span>
                 </label>
             </div>

@@ -2,6 +2,7 @@ import stl from "./Header.module.css"
 import {Navbar} from "../../../Presentation/Navbar/Navbar";
 import {Link} from "react-router-dom";
 import React from "react";
+import MyInfoApplyWithNeedAgree from "../../../components/myInfo-apply/myInfoApplyWithNeedAgree";
 
 function MyInfoHeader(props) {
     const {email, nick, userId} = props
@@ -11,7 +12,8 @@ function MyInfoHeader(props) {
                 <div className={stl.Row}>
                     <div className={stl.Ticket}>
                         <div className={stl.UserTicket}>
-                            <div> 준비된 여정이 없습니다</div>
+                            {/* <div> 준비된 여정이 없습니다</div> */}
+                            <MyInfoApplyWithNeedAgree/>
                         </div>
                     </div>
                     <div className={stl.User}>

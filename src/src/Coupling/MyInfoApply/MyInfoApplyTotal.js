@@ -25,8 +25,8 @@ function MyInfoApplyTotal(props) {
                     setChat={setChat}
                     onChat={onChat}
                     nick={nick}
-                    recruitPostID={recruitPost.writeMember.idNumber}
-                    title={recruitPost.writeMember.userId
+                    recruitPostID={recruitPost.recruitCarfullID}
+                    title={recruitPost.boardTitle
                     }/> : null
                 }
 

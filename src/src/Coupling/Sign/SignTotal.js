@@ -14,13 +14,25 @@ function SignTotal(props) {
     const [isPhoneNum, setPhoneNum] = useState("");
     const [isAgree, setAgree] = useState(false);
     const Submit = ()=>{
-        formData.append('id', isID);
-        formData.append('pw', isPW);
-        formData.append('pw_check', isPwCheck);
-        formData.append('nick', isNick);
-        formData.append('gender', isGender);
-        formData.append('email', isEmail);
-        formData.append('phone_number', isPhoneNum);
+
+        if(formData.has('id')) {
+            formData.set('id', isID);
+            formData.set('pw', isPW);
+            formData.set('pw_check', isPwCheck);
+            formData.set('nick', isNick);
+            formData.set('gender', isGender);
+            formData.set('email', isEmail);
+            formData.set('phone_number', isPhoneNum);
+        } else {
+            formData.append('id', isID);
+            formData.append('pw', isPW);
+            formData.append('pw_check', isPwCheck);
+            formData.append('nick', isNick);
+            formData.append('gender', isGender);
+            formData.append('email', isEmail);
+            formData.append('phone_number', isPhoneNum);
+        }
+        
         onClick();
     }
     return (

@@ -5,10 +5,13 @@ import RecruitListItem from './RecruitListItem';
 import { Navigate, useNavigate } from 'react-router-dom';
 import MyRecruitAcceptedApplies from './MyRecruitAcceptedApplies';
 import MyRecruitStatus from './MyRecruitStatus';
+import { useState } from 'react';
+import { MyChat } from '../../routes/MyChat';
 
 function RecruitListWithApplies(props) {
     const { recruitPosts } = props;
     const navigate = useNavigate();
+    const [onChat, setChat] = useState(false);
 
     return (
         <div className={stl.recruitListWrapper}>
@@ -38,10 +41,29 @@ function RecruitListWithApplies(props) {
                             </div>
                         </div>
 
-                        <MyRecruitStatus
-                            key={recruitPost.recruitCarfullID}
-                            recruitPost={recruitPost}
-                        />
+                        <div className={stl.myRecruitAppliesContainer}>
+                            <div className={stl.myRecruitAppliesLeft}>
+                                <MyRecruitStatus
+                                    key={recruitPost.recruitCarfullID}
+                                    recruitPost={recruitPost}
+                                />
+                            </div>
+
+                            <div className={stl.myRecruitAppliesRight}>
+                                <button onClick={() => setChat(true)}>채팅하기</button>
+                            </div>
+                            {
+                                onChat ? <MyChat
+                                setChat={setChat}
+                                onChat={onChat}
+                                nick={recruitPost.writeMember.nick}
+                                recruitPostID={recruitPost.recruitCarfullID}
+                                title={recruitPost.boardTitle
+                            }/> : null
+                }
+                        </div>
+
+                        
                         
                     </>
                 );

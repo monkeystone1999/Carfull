@@ -11,13 +11,13 @@ function MyChatTotal(props) {
         <>
             <div className={stl.Container} onClick={Dialoging}>
                 <div className={stl.Des}>
-                    <label>{title}님과의 채팅</label>
+                    <label>{title}<b>방의 채팅</b></label>
                     <div className={stl.Chats}>
                         {allMessage.map((message, index) => (
                             <div key={index}>
                                 {
                                     message.nick == nick ?
-                                        <div className={stl.Mine}> {message.content}: 나</div>
+                                        <div className={stl.Mine}> <span className={stl.MineChat}>{message.content}</span></div>
                                         : <div className={stl.Opponent}>{message.nick} : {message.content}</div>
                                 }
 
